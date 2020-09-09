@@ -25,14 +25,14 @@ const test = mongoose.model('test', {
 
 })
 
-const t1 = new test({
-    test_id:1,
-    test_name: "ki",
-    test_price: 20
-})
-t1.save().then(()=>{
-    console.log("ok");
-}).catch((error) => {
-    console.log(error);
-})
+// const t1 = new test({
+//     test_id:1,
+//     test_name: "ki",
+//     test_price: 20
+// })
+// t1.save().then(()=>{
+//     console.log("ok");
+// }).catch((error) => {
+//     console.log(error);
+// })
 module.exports = test;
