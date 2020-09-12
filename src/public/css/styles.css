@@ -1,0 +1,142 @@
+.navbar{
+    margin-top: 0px;
+    padding: 15px;
+}
+
+.nav-item{
+    padding-right: 7px;
+}
+
+.img_jumbo{
+    background-size: 100%, 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.departments{
+    background-image: url('../images/dept2.png'); 
+    background-size: 100%, 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.icon_class{
+    color: black;
+    font-size: 30px;
+    padding: 15px;
+}
+
+.text_black{
+    color: black;
+}
+
+footer{
+    text-align: center;
+    padding: 30px;
+    background-color: rgb(108, 184, 167);
+    color: #101820FF;
+    margin-top: 70px;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+div.center a{
+    padding: 20px;
+}
+
+.jumbotron{
+    padding: 10%;
+    margin-bottom: 0%;
+    background-color: transparent;
+    /* overflow: hidden; */
+}
+
+.center{
+    text-align: center;
+    margin: auto;
+}
+
+.animation{
+    position: relative;
+    animation: mymove 5s;
+}
+
+@keyframes mymove {
+    from {left: 200px;}
+    to{left: 0px;}
+}
+
+footer {
+    display: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col {
+    width: fit-content;
+    min-height: 100px;
+    margin: 10px;
+}
+
+.list-heading {
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.footer-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.column {
+    float: left;
+    width: 30%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {
+      justify-content: center;
+      padding: 10px;
+      margin-right: 0px;
+    }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+
+  .card p{
+      margin:0px;
+  }
