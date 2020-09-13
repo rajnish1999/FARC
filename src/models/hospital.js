@@ -1,21 +1,12 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const hospital = mongoose.model('hospital', {
-    h_id: {
-        type: Number,
-        required: true,
-        trim: true
-    },
-    h_name: {
+const Hospital = mongoose.model('Hospital', {
+    address: {
         type: String,
-        required: true,
         trim: true
     },
-    dpment: {
-        type: [Number],
-    },
-    totalBeds: {
+    beds: {
         type: Number,
         trim: true
     },
@@ -23,12 +14,21 @@ const hospital = mongoose.model('hospital', {
         type: Number,
         trim: true
     },
-    contactNo: {
+    contact: {
         type: String,
         trim: true
     },
-    addressH: {
+    depts: {
+        type: [Number],
+    },
+    hId: {
+        type: Number,
+        required: true,
+        trim: true
+    },
+    hName: {
         type: String,
+        required: true,
         trim: true
     },
     link: {
@@ -36,5 +36,21 @@ const hospital = mongoose.model('hospital', {
         trim: true
     }
 })
+// const hospital = new Hospital({
+//     "address" : "Guru Teg Bahadur Hospital, Dilshad Garden, Delhi, 110095",
+//     "beds" : 143,
+//     "bedsAvailable" : 221,
+//     "contact" : "01122586262",
+//     "depts" : [ 2, 4, 8, 11, 6, 13 ],
+//     "hId" : 3,
+//     "hName" : "Guru Teg Bahadur Hospital",
+//     "link" : "https://goo.gl/maps/msW8sbU6BD82"
+//   })
 
-module.exports = hospital;
+// hospital.save().then(() => {
+
+// }).catch((e) => {
+
+// })
+
+module.exports = Hospital;
