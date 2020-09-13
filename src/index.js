@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 require('./db/mongoose');
 const Department = require('./models/department');
@@ -8,8 +9,9 @@ const Hospital = require('./models/hospital');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+// app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 
 app.get('/department', (req, res) => {
@@ -20,9 +22,11 @@ app.get('/department', (req, res) => {
     })
 })
 
-// app.get('/add_department', (req, res) => {
-//     res.render('dept_add');
-// })
+app.get('/add_department', (req, res) => {
+    res.render('dept_add');
+})
+
+
 
 app.post('/department', (req, res) => {
     const department = new Department(req.body)
@@ -67,3 +71,5 @@ app.post('/hospital', (req, res) => {
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 })
+
+console.log(__filename);
