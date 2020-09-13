@@ -26,13 +26,11 @@ app.get('/add_department', (req, res) => {
     res.render('dept_add');
 })
 
-
-
-app.post('/department', (req, res) => {
+app.post('/add_department', (req, res) => {
     const department = new Department(req.body)
 
     department.save().then(() => {
-        res.status(201).send(department)
+        res.redirect('/');
     }).catch((e) => {
         res.status(400).send(e);
     })
