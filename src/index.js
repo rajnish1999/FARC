@@ -7,12 +7,26 @@ const Department = require('./models/department');
 const Hospital = require('./models/hospital');
 
 const app = express();
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
+
 const port = process.env.PORT || 3000;
 
 // app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
+
+
+app.get('/', (req, res) => {
+    Department.find({}).then((departments) => {
+        // console.log(departments);
+        res.render('index.ejs', {
+            departments
+        });
+    })
+});
 
 app.get('/department', (req, res) => {
     Department.find({}).then((departments) => {
