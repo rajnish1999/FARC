@@ -50,12 +50,11 @@ app.post('/add_department', (req, res) => {
     })
 })
 
-app.get('/department/deptWiseHosp/:id', (req, res) => {
-    const id = req.params.id;
+app.get('/deptWiseHosp/:dept_id', (req, res) => {
+    const id = req.params.dept_id;
     
-    Department.findById({_id : id}).then((department) => {
-            const h_id = department.h_id;
-            res.status(200).send(h_id);
+    Department.find({deptId: id}).then((department) => {
+            console.log(department);
     }).catch((error) => {
         console.log("error : "+error);
     })

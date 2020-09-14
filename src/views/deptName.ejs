@@ -10,8 +10,8 @@
                 <div class="column">
                     <div class="card">
                         <% console.log(departments.length) %>
-                            <p><%= departments[j].deptName %></p>
-                        
+                            <p><button onclick="location.href='/deptWiseHosp/<%= departments[j].deptId %>'" 
+                                type="button"><%= departments[j].deptName %></button></p>  
                     </div>
                 </div>
             <% } %>
