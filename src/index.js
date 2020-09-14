@@ -14,9 +14,20 @@ app.set('views', path.join(__dirname,'views'));
 
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+// app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
+
+
+app.get('/', (req, res) => {
+    Department.find({}).then((departments) => {
+        // console.log(departments);
+        res.render('index.ejs', {
+            departments
+        });
+    })
+});
 
 app.get('/department', (req, res) => {
     Department.find({}).then((departments) => {
@@ -26,15 +37,15 @@ app.get('/department', (req, res) => {
     })
 })
 
-// app.get('/add_department', (req, res) => {
-//     res.render('dept_add');
-// })
+app.get('/add_department', (req, res) => {
+    res.render('dept_add');
+})
 
-app.post('/department', (req, res) => {
+app.post('/add_department', (req, res) => {
     const department = new Department(req.body)
 
     department.save().then(() => {
-        res.status(201).send(department)
+        res.redirect('/');
     }).catch((e) => {
         res.status(400).send(e);
     })
@@ -59,16 +70,6 @@ app.get('/hospital', (req, res) => {
     })
 })
 
-app.get('/', (req, res) => {
-    Department.find({}).then((departments) => {
-        // res.status(200).send(departments);
-        res.render('index.ejs', {departments: departments});
-        // res.render('index.ejs');
-
-    }).catch((e) => {
-        res.status(500).send();
-    })
-});
 app.post('/hospital', (req, res) => {
     const hospital = new Hospital(req.body)
     // console.log(req.body);
@@ -83,3 +84,5 @@ app.post('/hospital', (req, res) => {
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 })
+
+console.log(__filename);
