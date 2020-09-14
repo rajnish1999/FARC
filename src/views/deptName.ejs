@@ -1,0 +1,22 @@
+<!--include department icons or tabs on the home page-->
+
+<% const l  = Math.ceil(departments.length/3) %>
+<% let k = 0 %>
+<% for(let i =0;i < l ;i++){ %>
+    <div class="row">
+        <% for(let j = k;j < (k+3) ;j++){ %>
+            <% if(j < departments.length) {%>
+                <div class="column">
+                    <div class="card">
+                        <% console.log(departments.length) %>
+                            <p><%= departments[j].deptName %></p>
+                        
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+        <% k=k+3 %>   
+    </div>
+<% } %>
+
+    

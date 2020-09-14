@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 require('./db/mongoose');
 const Department = require('./models/department');
@@ -9,6 +10,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.set('views', path.join(__dirname,'views'));
 
 const port = process.env.PORT || 3000;
 
@@ -60,8 +62,8 @@ app.get('/hospital', (req, res) => {
 app.get('/', (req, res) => {
     Department.find({}).then((departments) => {
         // res.status(200).send(departments);
-        // res.render('index.ejs', {department: department});
-        res.render('index.ejs');
+        res.render('index.ejs', {departments: departments});
+        // res.render('index.ejs');
 
     }).catch((e) => {
         res.status(500).send();
