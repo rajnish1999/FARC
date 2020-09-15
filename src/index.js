@@ -51,6 +51,25 @@ app.post('/add_department', (req, res) => {
     })
 })
 
+app.get('/deptWiseHosp/:dept_id', (req, res) => {
+    const id = req.params.dept_id;
+    const hospitals = [];
+    Hospital.find({}).then((hospitalsArray) => {
+        hospitalsArray = hospitalsArray;
+        Department.find({deptId: id}).then((department) => {
+            res.render('deptWiseHosp', {
+                hospitals,
+                deptId: department.deptId,
+            })
+        }).catch((error) => {
+            console.log("error : "+error);
+        })
+    }).catch((error) => {
+        console.log("error", error);
+    })
+    
+})
+
 app.get('/department/deptWiseHosp/:id', (req, res) => {
     const id = req.params.id;
     

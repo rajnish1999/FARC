@@ -105,14 +105,14 @@ footer {
     float: left;
     width: 30%;
     padding: 0px 10px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin: 0 1%;
 }
   
 .row {
     text-align: center;
-    margin-top: 10px;
-    margin-right: 0px;
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 2%;
 }
   
 .row:after {
@@ -125,7 +125,7 @@ footer {
     .column {
         width: 100%;
         display: block;
-        /* margin-bottom: 10px; */
+        margin-bottom: 10px;
     }
 
     .card p{
@@ -140,6 +140,17 @@ footer {
     background-color: #f1f1f1;
 } 
 
+.card:hover{
+    transform: scale(1.05);
+}
+
 .card p{
     margin:0px;
 }  
+
+.deptButton{
+    border:none; 
+}
+.deptButton:focus{
+    outline: none;
+}

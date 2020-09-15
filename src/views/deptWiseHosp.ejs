@@ -1,0 +1,35 @@
+<%- include('partials/header') %>  
+
+<div class="jumbotron" style="background-color: lightgray;" >
+    <h1 class="display-4">Heya!!!</h1>
+    <p style="font-size: 30px;">Here'll be the quotes</p>
+</div>
+
+
+
+<% const hosplist = [] %>
+
+<% for(var i=0;i<hospitals.length;i++){ %>
+
+    <% if(hospitals[i].depts.includes(deptId)){ %>
+        <% hosplist.push(hospitals[i]) %>
+    <% }else{ %>
+        <% console.log('no deptid found') %> 
+    <% } %> 
+<% } %>
+
+<% console.log(hosplist) %> 
+
+
+<% if(hosplist.length > 0){ %> 
+    <% for(var i = 0; i < hosplist.length; i++ ){ %>
+        <p> <%= hosplist[i].hName %> </p>
+    
+    <% } %>
+<% }else{ %> 
+    <p>No match found</p>
+<% } %> 
+
+
+
+<%- include('partials/footer') %>
