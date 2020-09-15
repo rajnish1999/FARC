@@ -25,10 +25,16 @@
     </div>
 </div>
 
+<% for(let i=0;i < department.treatments.length; i++) {%>
+    <div>
+        <span><%= department.treatments[i].treatmentName %></span>
+        <span><%= department.treatments[i].treatmentPrice %></span>
+    </div>
+<% } %>
 
 <% const hospList = [] %>
 
-<% for(var i=0;i < hospitals.length;i++){ %>
+<% for(let i=0;i < hospitals.length;i++){ %>
    
     <% if(hospitals[i].depts.includes(deptId)){ %>
         <% hospList.push(hospitals[i]) %>
@@ -38,7 +44,7 @@
 <% } %>
 
 <% if(hospList.length > 0){ %> 
-    <% for(var i=0;i < hospList.length;i++){ %>
+    <% for(let i=0;i < hospList.length;i++){ %>
         <p><%= hospList[i].hName %></p>
     
     <% } %>
