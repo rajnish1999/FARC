@@ -25,7 +25,9 @@ app.get('/', (req, res) => {
         console.log(departments);
         res.render('index.ejs', {
             departments
-        });
+        }).catch((error) => {
+            console.log("error", error);
+        })
     })
 });
 
@@ -56,8 +58,15 @@ app.get('/deptWiseHosp/:dept_id', (req, res) => {
     let hospitals = [];
     Hospital.find({}).then((hospitalsArray) => {
         hospitals = hospitalsArray;
-        res.render('deptWiseHosp', {hospitals, 
-            deptId: id})
+        Department.findOne({deptId: id}).then((department) => {
+            res.render('deptWiseHosp', {hospitals, 
+                deptId: id,
+                department
+            }).catch((error) => {
+                console.log("error", error);
+            })
+        })
+        
     }).catch((error) => {
         console.log("error", error);
     })
