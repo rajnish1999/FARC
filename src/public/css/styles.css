@@ -56,6 +56,10 @@ div.center a{
     padding: 20px;
 }
 
+.jumbotron{
+    border-radius: 0px;
+}
+
 .transparent{
     background-color: transparent;
     /* overflow: hidden; */
@@ -166,3 +170,8 @@ footer {
     outline: none;
 }
 
+@media screen and (max-width: 1285px){
+    .changingContent{
+        width: 50%;
+    }
+}
