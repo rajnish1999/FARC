@@ -24,7 +24,10 @@
     background-size: cover;
     justify-content: center;
     align-items: center;
-    
+}
+
+.no_margin{
+    margin-bottom: 0px;
 }
 
 .icon_class{
@@ -53,11 +56,14 @@ div.center a{
     padding: 20px;
 }
 
-.jumbotron{
-    padding: 10%;
-    margin-bottom: 0%;
+.transparent{
     background-color: transparent;
     /* overflow: hidden; */
+}
+
+.wide{
+    padding: 10%;
+    margin-bottom: 0%;
 }
 
 .center{
@@ -83,6 +89,11 @@ footer {
     text-align: center;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.gap{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .col {
@@ -154,3 +165,4 @@ footer {
 .deptButton:focus{
     outline: none;
 }
+

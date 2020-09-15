@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 
 app.get('/', (req, res) => {
     Department.find({}).then((departments) => {
-        // console.log(departments);
+        console.log(departments);
         res.render('index.ejs', {
             departments
         });
@@ -53,32 +53,15 @@ app.post('/add_department', (req, res) => {
 
 app.get('/deptWiseHosp/:dept_id', (req, res) => {
     const id = req.params.dept_id;
-    const hospitals = [];
+    let hospitals = [];
     Hospital.find({}).then((hospitalsArray) => {
-        hospitalsArray = hospitalsArray;
-        Department.find({deptId: id}).then((department) => {
-            res.render('deptWiseHosp', {
-                hospitals,
-                deptId: department.deptId,
-            })
-        }).catch((error) => {
-            console.log("error : "+error);
-        })
+        hospitals = hospitalsArray;
+        res.render('deptWiseHosp', {hospitals, 
+            deptId: id})
     }).catch((error) => {
         console.log("error", error);
     })
     
-})
-
-app.get('/department/deptWiseHosp/:id', (req, res) => {
-    const id = req.params.id;
-    
-    Department.findById({_id : id}).then((department) => {
-            const h_id = department.h_id;
-            res.status(200).send(h_id);
-    }).catch((error) => {
-        console.log("error : "+error);
-    })
 })
 
 app.get('/hospital', (req, res) => {

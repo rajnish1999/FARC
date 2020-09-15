@@ -1,12 +1,12 @@
 
 <%- include('partials/header') %>     
 
-<div class="jumbotron img_jumbo" style="background-image: url('images/appoint3.jpeg')">
-        <h1 class="display-4">Frequent Appointment, Rapid Cure</h1>
+<div class="jumbotron img_jumbo wide" style="background-image: url('images/appoint3.jpeg')">
+        <h1 class="display-4">Faster Appointment, Rapid Cure</h1>
         <p style="font-size: 30px;">Appointments made easy</p>
 </div>
 
-<div class="jumbotron " style="margin-top: 0px; padding: 50px">
+<div class="jumbotron transparent no_margin">
     <div class="center">
         <!-- animation has been removed for now coz it wasn't working fine -->
         <h2>We care!</h2>
@@ -15,8 +15,10 @@
 </div>
 
 <div class="jumbotron center departments" >
-    <h1 class="display-4" style="margin-top: auto; margin-bottom: auto;" >Departments</h1>
+    <h1 class="display-4">Departments</h1>
 </div>
 
-<%- include('../views/deptName.ejs') %> 
+<div class="gap">
+    <%- include('../views/deptName.ejs') %> 
+</div>
 <%- include('partials/footer') %> 

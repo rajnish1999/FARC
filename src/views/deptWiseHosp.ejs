@@ -1,35 +1,50 @@
 <%- include('partials/header') %>  
 
-<div class="jumbotron" style="background-color: lightgray;" >
-    <h1 class="display-4">Heya!!!</h1>
-    <p style="font-size: 30px;">Here'll be the quotes</p>
+<script>
+    let arr = [`"Health is an investment, not an expense."`, `"Real heroes wear masks below their eyes."`, `"Stay as safe as you can! And thank you!"`];
+    let a = 0;  
+    setInterval(() => {   
+        const moving = document.getElementById('changingContent');  
+        moving.innerHTML=arr[a];    
+        a++;
+        a = a % arr.length;    
+    }, 3000);  
+
+</script>
+
+<div class="jumbotron wide img_jumbo" style="background-image: url('../images/page2.1.jpg');">
+    <div class="container text-center">
+        <h3 class="display-4" id="changingContent">Faster Appointment, Rapid Cure</h3>
+    </div>
 </div>
 
 
+<div class="jumbotron transparent no_margin">
+    <div class="center">
+        <h2>Hospitals belonging to this dept are: </h2>
+    </div>
+</div>
 
-<% const hosplist = [] %>
 
-<% for(var i=0;i<hospitals.length;i++){ %>
+<% const hospList = [] %>
 
+<% for(var i=0;i < hospitals.length;i++){ %>
+   
     <% if(hospitals[i].depts.includes(deptId)){ %>
-        <% hosplist.push(hospitals[i]) %>
+        <% hospList.push(hospitals[i]) %>
     <% }else{ %>
         <% console.log('no deptid found') %> 
     <% } %> 
 <% } %>
 
-<% console.log(hosplist) %> 
-
-
-<% if(hosplist.length > 0){ %> 
-    <% for(var i = 0; i < hosplist.length; i++ ){ %>
-        <p> <%= hosplist[i].hName %> </p>
+<% if(hospList.length > 0){ %> 
+    <% for(var i=0;i < hospList.length;i++){ %>
+        <p><%= hospList[i].hName %></p>
     
     <% } %>
 <% }else{ %> 
     <p>No match found</p>
 <% } %> 
-
 
 
 <%- include('partials/footer') %>
