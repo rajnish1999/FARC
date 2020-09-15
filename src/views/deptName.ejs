@@ -9,9 +9,7 @@
             <% if(j < departments.length) {%>
                 <div class="column">
                     <div class="card">
-                        <% console.log(departments.length) %>
-                            <p><button onclick="location.href='/deptWiseHosp/<%= departments[j].deptId %>'" 
-                                type="button"><%= departments[j].deptName %></button></p>  
+                        <p><%= departments[j].deptName %></p>                        
                     </div>
                 </div>
             <% } %>

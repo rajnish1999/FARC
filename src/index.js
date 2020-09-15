@@ -10,6 +10,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.set('views', path.join(__dirname,'views'));
 
 const port = process.env.PORT || 3000;
 
@@ -21,7 +22,7 @@ app.set("view engine", "ejs");
 
 app.get('/', (req, res) => {
     Department.find({}).then((departments) => {
-        // console.log(departments);
+        console.log(departments);
         res.render('index.ejs', {
             departments
         });
@@ -52,12 +53,15 @@ app.post('/add_department', (req, res) => {
 
 app.get('/deptWiseHosp/:dept_id', (req, res) => {
     const id = req.params.dept_id;
-    
-    Department.find({deptId: id}).then((department) => {
-            console.log(department);
+    let hospitals = [];
+    Hospital.find({}).then((hospitalsArray) => {
+        hospitals = hospitalsArray;
+        res.render('deptWiseHosp', {hospitals, 
+            deptId: id})
     }).catch((error) => {
-        console.log("error : "+error);
+        console.log("error", error);
     })
+    
 })
 
 app.get('/hospital', (req, res) => {

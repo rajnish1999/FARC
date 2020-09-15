@@ -1,2 +1,24 @@
+<%- include('partials/header') %>  
+
+<% const hospList = [] %>
+
+<% for(var i=0;i < hospitals.length;i++){ %>
+   
+    <% if(hospitals[i].depts.includes(deptId)){ %>
+        <% hospList.push(hospitals[i]) %>
+    <% }else{ %>
+        <% console.log('no deptid found') %> 
+    <% } %> 
+<% } %>
+
+<% if(hospList.length > 0){ %> 
+    <% for(var i=0;i < hospList.length;i++){ %>
+        <p><%= hospList[i].hName %></p>
+    
+    <% } %>
+<% }else{ %> 
+    <p>No match found</p>
+<% } %> 
 
 
+<%- include('partials/footer') %>
