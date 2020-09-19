@@ -55,13 +55,17 @@ app.post('/add_department', (req, res) => {
 
 app.get('/deptWiseHosp/:dept_id', (req, res) => {
     const id = req.params.dept_id;
-    let hospitals = [];
+    let hospitals = [], departments = [];
+    Department.find({}).then((departmentsArray) => {
+        departments = departmentsArray
+    })
     Hospital.find({}).then((hospitalsArray) => {
         hospitals = hospitalsArray;
         Department.findOne({deptId: id}).then((department) => {
             res.render('deptWiseHosp', {hospitals, 
                 deptId: id,
-                department
+                department,
+                departments
             }).catch((error) => {
                 console.log("error", error);
             })
