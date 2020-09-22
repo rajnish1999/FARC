@@ -2,9 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+
 require('./db/mongoose');
-const Department = require('./models/department');
-const Hospital = require('./models/hospital');
+const departmentRouter = require('./routers/department');
+const hospitalRouter = require('./routers/hospital');
+const userRouter = require('./routers/user');
+const landingPageRouter = require('./routers/landingPage');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -19,85 +22,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 
-
-app.get('/', (req, res) => {
-    Department.find({}).then((departments) => {
-        console.log(departments);
-        res.render('index.ejs', {
-            departments
-        }).catch((error) => {
-            console.log("error", error);
-        })
-    })
-});
-
-app.get('/department', (req, res) => {
-    Department.find({}).then((departments) => {
-        res.status(200).send(departments);
-    }).catch((e) => {
-        res.status(500).send();
-    })
-})
-
-app.get('/add_department', (req, res) => {
-    res.render('dept_add');
-})
-
-app.post('/add_department', (req, res) => {
-    const department = new Department(req.body)
-
-    department.save().then(() => {
-        res.redirect('/');
-    }).catch((e) => {
-        res.status(400).send(e);
-    })
-})
-
-app.get('/deptWiseHosp/:dept_id', (req, res) => {
-    const id = req.params.dept_id;
-    let hospitals = [], departments = [];
-    Department.find({}).then((departmentsArray) => {
-        departments = departmentsArray
-    })
-    Hospital.find({}).then((hospitalsArray) => {
-        hospitals = hospitalsArray;
-        Department.findOne({deptId: id}).then((department) => {
-            res.render('deptWiseHosp', {hospitals, 
-                deptId: id,
-                department,
-                departments
-            }).catch((error) => {
-                console.log("error", error);
-            })
-        })
-        
-    }).catch((error) => {
-        console.log("error", error);
-    })
-    
-})
-
-app.get('/hospital', (req, res) => {
-    Hospital.find({}).then((hospitals) => {
-        res.status(200).send(hospitals);
-    }).catch((e) => {
-        res.status(500),send(e);
-    })
-})
-
-app.post('/hospital', (req, res) => {
-    const hospital = new Hospital(req.body)
-    // console.log(req.body);
-    hospital.save().then(() => {
-        res.status(201).send(hospital);
-        console.log("post hosp");
-    }).catch((error) => {
-        res.status(400).send(error);
-    })
-})
+app.use(departmentRouter);
+app.use(hospitalRouter);
+app.use(userRouter);
+app.use(landingPageRouter);
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 })
-
-console.log(__filename);
