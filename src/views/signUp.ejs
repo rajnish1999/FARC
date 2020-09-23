@@ -63,6 +63,19 @@
                 message.innerText = "not matched";
             }
         })
+        document.getElementById('password').addEventListener('keyup', () => {
+            const pass = document.getElementById('password');
+            const cPass = document.getElementById('confirm_password');
+            const message = document.getElementById('message');
+
+            if(pass.value == cPass.value){
+                message.style.color = 'green';
+                message.innerText = "matched";
+            }else{
+                message.style.color = 'red';
+                message.innerText = "not matched";
+            }
+        })
     </script>
 
 </body>
