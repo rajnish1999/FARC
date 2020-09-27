@@ -14,21 +14,21 @@
     
     <div class="container">
         <div class="col-sm-6 col-sm-offset-3">
-            <h1><span class="fa fa-sign-in"></span> Add User</h1>        
+            <h1><span class="fa fa-sign-in"></span> Edit User</h1>        
             <br>
-            <form action="/signUp", method="POST">
-
+            <form action="/editUser/<%= user._id %>", method="post">
+                
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" name="name">
                 </div>
                 <div class="form-group">
                     <label>Email Id</label>
-                    <input type="text" class="form-control" name="email">
+                    <input type="text" class="form-control" name="email" value="<%= user.email %>" readonly>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" minLength="2" class="form-control" id="password" name="password">
+                    <input type="password" minlength="8" class="form-control" id="password" name="password">
                 </div>
                 <div class="form-group">
                     <label>Confirm Password</label>
@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript">
         document.getElementById('confirm_password').addEventListener('keyup', () => {
             const pass = document.getElementById('password');
             const cPass = document.getElementById('confirm_password');
