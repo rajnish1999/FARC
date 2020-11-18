@@ -7,7 +7,7 @@ router.get('/allHospitals', (req, res) => {
     Hospital.find({}).then((hospitals) => {
         res.status(200).send(hospitals);
     }).catch((e) => {
-        res.status(500),send(e);
+        res.status(500).send(e);
     })
 })
 
