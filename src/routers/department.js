@@ -21,7 +21,7 @@ router.post('/add_department', (req, res) => {
         res.redirect('/');
     }).catch((e) => {
         res.status(400).send(e);
-    })
+    }) 
 })
 
 module.exports = router;

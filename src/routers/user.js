@@ -11,16 +11,48 @@ router.get('/users', (req, res) => {
 })
 
 router .get('/signUp', (req, res) => {
-    res.render("signUp");
+    res.render("signUp",{
+        errors:undefined // here i am sending error as a parameter even though it is not needed there, because we have used error in the ejs file to print the error
+    });
 })
 router.post('/signUp', (req, res) => {
-    const user = new User(req.body);
+    // const user = new User(req.body);
+    const {name, email, password, confirmPass, age, contactNo} = req.body;
+    let errors = [];
+    if(!name || ! email || !password || !confirmPass || !confirmPass || !age || !contactNo){
+        errors.push("Please enter all the fields")
+    }
 
-    user.save().then(() => {
-        res.redirect('/')
-    }).catch((error) => {
-        res.status(400).send(error);
+    if(password.length < 6){
+        errors.push("password should be atleast 6 in length")
+    }
+    if(errors.length > 0){
+        res.render('signUp',{
+            errors : errors,
+            name, email, password, confirmPass, age, contactNo
+        })
+    }
+    User.findOne({email : email}).then((user) => {
+        if(!user){
+            const user = new User(req.body);
+            user.save().then(() => {
+                res.redirect('/')
+            }).catch((error) => {
+                res.status(400).send(error);
+            })
+        }else{
+            errors.push("email iD already exist");
+            res.render('signUp',{
+                errors, name, email, password, confirmPass, age, contactNo
+            })
+        }
+    }).catch((e) => {
+        errors.push(e);
+        res.render('signUp',{
+            errors, name, email, password, confirmPass, age, contactNo
+        })
     })
+
 })
 
 router.get('/editUser/:id', (req, res) => {
