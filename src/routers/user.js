@@ -10,7 +10,7 @@ router.get('/users', (req, res) => {
     })
 })
 
-router .get('/signUp', (req, res) => {
+router.get('/signUp', (req, res) => {
     res.render("signUp",{
         errors:undefined // here i am sending error as a parameter even though it is not needed there, because we have used error in the ejs file to print the error
     });

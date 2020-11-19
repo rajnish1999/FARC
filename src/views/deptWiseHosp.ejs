@@ -19,23 +19,30 @@
 </div>
 
 
-<div class="jumbotron transparent no_margin">
-    <div class="center">
-        <h2>Tests belonging to this dept are: </h2>
+<div class="jumbotron transparent no_margin" style="padding: 2rem;">
+    <div class="center">         
+        <u><h3>Tests</h3> </u>
     </div>
 </div>
 
-<% for(let i=0;i < department.treatments.length; i++) {%>
-    <div>
-        <span><%= department.treatments[i].treatmentName %></span>
-        <span><%= department.treatments[i].treatmentPrice %></span>
-    </div>
-<% } %>
+<div class="container" style="box-shadow: 10px 10px 5px grey; padding: 0px;">
+    <table >
+        <tr>
+            <th>Tests</th>
+            <th>Price</th>
+        </tr>        
+        <% for(let i=0;i < department.treatments.length; i++) {%>
+            <tr>
+                <td><%= department.treatments[i].treatmentName %></td>
+                <td><%= department.treatments[i].treatmentPrice %></td>
+            </tr>
+        <% } %>        
+    </table>
+</div>
 
-
-<div class="jumbotron transparent no_margin">
+<div class="jumbotron transparent no_margin" style="padding: 2rem; margin-top: 40px;">
     <div class="center">
-        <h2>Hospitals belonging to this dept are: </h2>
+        <u><h3>Hospitals</h3> </u>
     </div>
 </div>
 
@@ -51,13 +58,68 @@
 <% } %>
 
 <% if(hospList.length > 0){ %> 
-    <% for(let i=0;i < hospList.length;i++){ %>
+
+
+    <!-- <% for(let i=0;i < hospList.length;i++){ %>
         <p><%= hospList[i].hName %></p>
     
+    <% } %> -->
+
+
+    <% const l  = Math.ceil(hospList.length/3) %>
+    <% let k = 0 %>
+    <% for(let i =0;i < l ;i++){ %>
+        <div class="row">
+            <% for(let j = k;j < (k+3) ;j++){ %>
+                <% if(j < hospList.length) {%>
+                    <div class="column">
+                        <div class="card ">
+                            <img src="../images/hospital_icon.jpg" alt="hospital_image" class="card-img-top">
+                            <!-- <p> <%= hospList[j].hName%> </p>  -->
+                            <div class="card-body">
+                                <p class="card-title"> <%= hospList[j].hName%> </p>
+                            </div>
+                            <button class="btn btn-success" style="margin-bottom: 15px;">Book Appointment</button>
+                            
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+            <% k=k+3 %>   
+        </div>
     <% } %>
+    
+
+
 <% }else{ %> 
     <p>No match found</p>
 <% } %> 
 
+<style>
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #7cb8b8;
+  color: white;
+}
+
+</style>
 
 <%- include('partials/footer') %>
