@@ -54,6 +54,34 @@ router.post('/signUp', (req, res) => {
     })
 
 })
+router.get('/login',(req, res) => {
+    res.render('login',{
+        error : ""
+    })
+})
+
+router.post('/login',(req,res) => {
+    const {email, password} = req.body;
+    User.findOne({email : email}).then((user) => {
+        if(!user){
+            res.render('login',{
+                error : "user not found"
+            });
+        }else{
+            if(user.password != password){
+                res.render('login', {
+                    error : "wrong password"
+                })
+            }else{
+                res.render('login', {
+                    error : "user found"
+                })
+            }
+        }
+    }).catch((e) => {
+        res.send(e);
+    })
+})
 
 router.get('/editUser/:id', (req, res) => {
     const _id = req.params.id;
