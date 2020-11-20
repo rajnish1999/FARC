@@ -8,6 +8,7 @@ const departmentRouter = require('./routers/department');
 const hospitalRouter = require('./routers/hospital');
 const userRouter = require('./routers/user');
 const landingPageRouter = require('./routers/landingPage');
+const appointmentRouter = require('./routers/appointment');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -26,6 +27,7 @@ app.use(departmentRouter);
 app.use(hospitalRouter);
 app.use(userRouter);
 app.use(landingPageRouter);
+app.use(appointmentRouter);
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
