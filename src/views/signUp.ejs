@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add tests</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
-        body        { padding-top:80px; }
+        body        { padding-top:40px; }
     </style>    
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -51,6 +52,7 @@
                 <label>Contact Number</label>
                 <input type="text" pattern="(7|8|9)\d{9}" class="form-control" name="contactNo">
             </div>
+            <br>
             <button type="submit" class="btn btn-warning btn-lg" name="deptButton">Add</button>
 
         </form>
@@ -87,4 +89,5 @@
     })    
 </script>
 
-<%- include('partials/footer') %>
+</body>
+</html>
