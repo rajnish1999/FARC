@@ -6,3 +6,6 @@ mongoose.connect('mongodb+srv://rajnish1999:rajatiwari1@cluster0.jcfk2.mongodb.n
     useFindAndModify: false,
     useUnifiedTopology: true
 })
+
+//in this file we are connecting to the mongodb atlas, the link of connection is inside the mongoose.connect
+//basically this mongoose configuration file

@@ -49,19 +49,19 @@ const userSchema = new mongoose.Schema({
 })
 
 //hash the plain text password before saving
-userSchema.pre('save', function(next) {
-    const user  = this;
+// userSchema.pre('save', function(next) {
+//     const user  = this;
 
-    if(user.isModified('password')) {
-        bcrypt.hash(user.password, 8).then((hashedPassword) => {
-            user.password = hashedPassword;
-        }).catch((error) => {
-            console.log(error);
-        })
+//     if(user.isModified('password')) {
+//         bcrypt.hash(user.password, 8).then((hashedPassword) => {
+//             user.password = hashedPassword;
+//         }).catch((error) => {
+//             console.log(error);
+//         })
 
-        next();
-    }
-})
+//         next();
+//     }
+// })
 
 const User = mongoose.model('User', userSchema);
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('../authentication/setupPassport');
 const User = require('../models/user');
 const router = new express.Router();
 
@@ -11,76 +12,70 @@ router.get('/users', (req, res) => {
 })
 
 router.get('/signUp', (req, res) => {
-    res.render("signUp",{
-        errors:undefined // here i am sending error as a parameter even though it is not needed there, because we have used error in the ejs file to print the error
-    });
+    res.render('signUp');
 })
+
 router.post('/signUp', (req, res) => {
     // const user = new User(req.body);
     const {name, email, password, confirmPass, age, contactNo} = req.body;
     let errors = [];
     if(!name || ! email || !password || !confirmPass || !confirmPass || !age || !contactNo){
-        errors.push("Please enter all the fields")
+        errors.push({msg : "Please enter all the fields"})
     }
 
     if(password.length < 6){
-        errors.push("password should be atleast 6 in length")
+        errors.push({msg : "password should be atleast 6 in length"})
     }
+
+    if(password != confirmPass){
+        errors.push({msg : 'Passwords do not match'})
+    }
+
     if(errors.length > 0){
         res.render('signUp',{
-            errors : errors,
-            name, email, password, confirmPass, age, contactNo
+            errors,
+            name,
+            email,
+            password,
+            confirmPass, 
+            age, 
+            contactNo
         })
-    }
-    User.findOne({email : email}).then((user) => {
-        if(!user){
-            const user = new User(req.body);
-            user.save().then(() => {
-                res.redirect('/')
-            }).catch((error) => {
-                res.status(400).send(error);
-            })
-        }else{
-            errors.push("email iD already exist");
+    }else{
+        User.findOne({email : email}).then((user) => {
+            if(!user){
+                const user = new User(req.body);
+                user.save().then(() => {
+                    req.flash('success_msg', 'You are now registered and can log in');
+                    res.redirect('/login')
+                }).catch((err) => {
+                    res.status(400).send(err);
+                })
+            }else{
+                errors.push({msg : "email iD already exist"});
+                res.render('signUp',{
+                    errors, name, email, password, confirmPass, age, contactNo
+                })
+            }
+        }).catch((e) => {
+            errors.push(e);
             res.render('signUp',{
                 errors, name, email, password, confirmPass, age, contactNo
             })
-        }
-    }).catch((e) => {
-        errors.push(e);
-        res.render('signUp',{
-            errors, name, email, password, confirmPass, age, contactNo
         })
-    })
-
+    }
+    
 })
 router.get('/login',(req, res) => {
-    res.render('login',{
-        error : ""
-    })
+    res.render('login');
 })
 
-router.post('/login',(req,res) => {
-    const {email, password} = req.body;
-    User.findOne({email : email}).then((user) => {
-        if(!user){
-            res.render('login',{
-                error : "user not found"
-            });
-        }else{
-            if(user.password != password){
-                res.render('login', {
-                    error : "wrong password"
-                })
-            }else{
-                res.render('login', {
-                    error : "user found"
-                })
-            }
-        }
-    }).catch((e) => {
-        res.send(e);
-    })
+router.post('/login',(req,res,next) => {
+    passport.authenticate('local',{
+        successReturnToOrRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true // this is to set flash message
+    })(req, res, next)
 })
 
 router.get('/editUser/:id', (req, res) => {
@@ -91,6 +86,12 @@ router.get('/editUser/:id', (req, res) => {
         });
     })
 })
+
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/login');
+});
 
 router.post('/editUser/:id', (req, res) => {
     const updates = Object.keys(req.body);

@@ -20,37 +20,71 @@
         <br>
         <div id="message" ></div>
         
-        <% if(errors){ %> 
-            <div class="alert alert-danger" >
-                <strong> <%= errors %> </strong>
-            </div>
-        <% } %> 
+        <%- include ('partials/messages') %>
         
         <form action="/signUp", method="POST">
 
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" name="name" >
+                <label for="name">Name</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="name" 
+                    placeholder="Enter Name"
+                    value="<%= typeof name != 'undefined' ? name : ''%>"
+                >
             </div>
             <div class="form-group">
-                <label>Email Id</label>
-                <input type="text" class="form-control" name="email" >
+                <label for="email">Email Id</label>
+                <input type="text" 
+                    class="form-control" 
+                    name="email" 
+                    placeholder="Enter email"
+                    value="<%= typeof email != 'undefined' ? email : ''%>"
+                >
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    value="<%= typeof password != 'undefined' ? password : ''%>"
+                >
             </div>
             <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password"  class="form-control" id="confirm_password" name="confirmPass" >
+                <label for="confirmPass">Confirm Password</label>
+                <input 
+                    type="password"  
+                    class="form-control" 
+                    id="confirm_password" 
+                    name="confirmPass" 
+                    placeholder="Enter confirm_password"
+                    value="<%= typeof confirmPass != 'undefined' ? confirmPass : ''%>"
+                >
             </div>
             <div class="form-group">
-                <label>Age</label>
-                <input type="number" class="form-control" name="age">
+                <label for="age">Age</label>
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    name="age"
+                    placeholder="Enter age"
+                    value="<%= typeof age != 'undefined' ? age: ''%>"
+                >
             </div> 
             <div class="form-group">
-                <label>Contact Number</label>
-                <input type="text" pattern="(7|8|9)\d{9}" class="form-control" name="contactNo">
+                <label for="contactNo">Contact Number</label>
+                <input 
+                    type="text" 
+                    pattern="(7|8|9)\d{9}" 
+                    class="form-control" 
+                    name="contactNo"
+                    placeholder="Enter contact number"
+                    value="<%= typeof contactNo != 'undefined' ? contactNo : ''%>"
+                >
             </div>
             <br>
             <button type="submit" class="btn btn-warning btn-lg" name="deptButton">Add</button>
