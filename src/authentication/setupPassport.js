@@ -21,13 +21,11 @@ passport.use(
 )
 
 passport.serializeUser((user,done)=>{
-    done(null,user._id)
+    done(null,user)
 })
 
-passport.deserializeUser((userId, done)=>{
-    User.findById(_id, (err, user) => {
-        done(err, user);
-    })
+passport.deserializeUser((user, done)=>{
+        done(err, user);  
 })
 
 module.exports=passport
