@@ -20,14 +20,23 @@ passport.use(
     })
 )
 
-passport.serializeUser((user,done)=>{
-    done(null,user._id)
-})
+// passport.serializeUser((user,done)=>{
+//     done(null,user._id)
+// })
 
-passport.deserializeUser((userId, done)=>{
-    User.findById(_id, (err, user) => {
-        done(err, user);
-    })
-})
+// passport.deserializeUser((userId, done)=>{
+//     User.findById(_id, (err, user) => {
+//         done(err, user);
+//     })
+// })
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+
+    done(null, user);
+});
 
 module.exports=passport
