@@ -6,14 +6,69 @@
     <title>Add tests</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="../css/style">
     <style>
         body        { padding-top:80px; }
     </style>
 
 </head>
 <body>
+    <!-- <img src="../<%= hospital.imageURL %>" height="100vh">  -->
+    <div><h1>Book an appointment</h1></div>
+    <div></div>
     
-   <img src="../public/images/hospImages/aiims.jpg"> 
+    <% for( let i=0;i< datesArr.length ;i++) {%>
+        <div><%= datesArr[i] %></div>
+        <div 
+            id="count-<%= i %>"
+            class="countClass"
+        > 
+        <%= availabilityCountArr[i] %>
+        </div>
+        <input 
+            type="button" 
+            onclick="postData('<%= datesArr[i] %>', '<%= i %>')" 
+            value="click me"
+            id="btn-<%= i %>"
+            class="classBtn"
+        >
+    <% } %>
     
+
+    <script>
+        const classBtn = document.getElementsByClassName('classBtn');
+        const countClass = document.getElementsByClassName('countClass');
+        for(let i=0;i<countClass.length;i++){
+           if(countClass[i].innerText == 0){
+                classBtn[i].disabled = true;
+           }
+        }
+        const postData = (date, index) => {
+            console.log(index);
+            const data = {
+                date
+            };
+            fetch('/specificHospital/<%= hospital.hId %>', {
+                method : 'POST' ,
+                headers : {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(data)
+            }).then((response) => {
+                return response.json();
+            }).then((result) => {
+                if(result){
+                    const count = document.getElementById(`count-${index}`);
+                    const btn = document.getElementById(`btn-${index}`);
+                    count.innerText-=1;
+                    if(count.innerText==0){
+                        btn.disabled = true;
+                    }
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    </script>
 </body>
 </html>

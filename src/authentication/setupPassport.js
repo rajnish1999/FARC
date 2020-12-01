@@ -21,11 +21,17 @@ passport.use(
 )
 
 passport.serializeUser((user,done)=>{
-    done(null,user)
+    // console.log(user);
+    done(null,user._id)
 })
 
-passport.deserializeUser((user, done)=>{
-        done(err, user);  
-})
 
+passport.deserializeUser((_id, done) => {
+    User.findById(_id).then((user) => {
+        done(null, user);
+    }).catch((err) => {
+        console.log(err);
+    })
+      
+  });
 module.exports=passport
