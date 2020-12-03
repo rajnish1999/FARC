@@ -26,6 +26,17 @@
     align-items: center;
 }
 
+.bookAppointment{
+    background-image: url('../images/bookAppointment.jpg'); 
+    background-size: 100%, 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+}
+
 .no_margin{
     margin-bottom: 0px;
 }
@@ -174,4 +185,16 @@ footer {
     .changingContent{
         width: 50%;
     }
+}
+
+
+.blockButton{
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #4CAF50;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
 }

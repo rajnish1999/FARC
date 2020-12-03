@@ -1,16 +1,14 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// const Appointment = mongoose.model('Appointment', {
-//     date : String,
-//     appointmentsDone : {
-//         Number,
-//         trim:true,
-//     },
-//     patients : [String]
-// })
+const Appointment = mongoose.model('Appointment', {
+    appointId : String, //this is will be hId+date
+    appointmentsAvail : {
+        type : Number,
+        trim : true,
+        default: 10
+    },
+    patients : [String],
+})
 
-// module.exports = Appointment 
+module.exports = Appointment 
 
-const ob = new Date();
-ob.setDate(ob.getDate()+1);
-console.log(ob.toDateString());

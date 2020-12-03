@@ -4,16 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add tests</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <style>
-        body        { padding-top:80px; }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 <body>
+
+    <div class="jumbotron img_jumbo wide" style=" background-image: url('../<%= hospital.imageURL %>'); height: 50%;">        
+    </div>
+
+    <div class=" jumbotron bg-dark text-white center"  >
+        <h1 class="display-3 "> <%= hospital.hName %> </h1>
+    </div>
+
+    <div class="jumbotron center bookAppointment" >
+        <h1 class="display-4">Book an Appointment</h1>
+    </div>
+
+    <% const l  = Math.ceil(datesArr.length/3) %>
+    <% let k = 0 %>
+    <% for(let i =0;i < l ;i++){ %>
+        <div class="row">
+            <% for(let j = k;j < (k+3) ;j++){ %>
+                <% if(j < datesArr.length) {%>
+                    <div class="column">
+                        <div class="card " style="transition: 0.5s;">                            
+                            <div class="card-body">
+                                <p class="card-title"> Date: <%= datesArr[j] %> </p>
+                                <p class="card-title countClass" id="count-<%= j %>"> Availability: <%= availabilityCountArr[i] %> </p>                                
+                            </div>
+                            <input type="button" 
+                                value="Book Appointment"
+                                onclick="postData('<%= datesArr[i] %>', '<%= i %>')"
+                                id="btn-<%= i %>"
+                                class="classBtn btn btn-success"
+                            >                            
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+            <% k=k+3 %>   
+        </div>
+    <% } %>
     
-   <img src="../<%= hospital.imageURL %>" height="100vh"> 
-    
-</body>
-</html>
+    <div class="jumbotron center" style="margin-top: 40px;">
+        <h1 class="display-4">To visit the official website 
+             
+                <a href="<%= hospital.hospLink %>" 
+                    target="_blank"
+                    style="color: black;"
+                >
+                    <button class="btn btn-warning">Click here</button>                    
+                </a> 
+        </h1>
+        <a href="<%= hospital.link %> " target="_blank">
+            <button type="button" class="blockButton btn btn-success">
+                Visit Google maps for <%= hospital.hName %> here. 
+            </button>    
+        </a>
+    </div>
+
+    <script>
+        const classBtn = document.getElementsByClassName('classBtn');
+        const countClass = document.getElementsByClassName('countClass');
+        for(let i=0;i<countClass.length;i++){
+           if(countClass[i].innerText == 0){
+                classBtn[i].disabled = true;
+           }
+        }
+        const postData = (date, index) => {
+            console.log(index);
+            const data = {
+                date
+            };
+            fetch('/specificHospital/<%= hospital.hId %>', {
+                method : 'POST' ,
+                headers : {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(data)
+            }).then((response) => {
+                return response.json();
+            }).then((result) => {
+                if(result){
+                    const count = document.getElementById(`count-${index}`);
+                    const btn = document.getElementById(`btn-${index}`);
+                    count.innerText-=1;
+                    if(count.innerText==0){
+                        btn.disabled = true;
+                    }
+                }
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    </script>
+
+<%- include('partials/footer') %> 

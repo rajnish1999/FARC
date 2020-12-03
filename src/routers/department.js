@@ -15,13 +15,13 @@ router.get('/add_department', (req, res) => {
 })
 
 router.post('/add_department', (req, res) => {
-    const department = new Department(req.body)
-
-    department.save().then(() => {
-        res.redirect('/');
-    }).catch((e) => {
-        res.status(400).send(e);
-    }) 
+    // const department = new Department(req.body)
+    res.send(req.user);
+    // department.save().then(() => {
+    //     res.redirect('/');
+    // }).catch((e) => {
+    //     res.status(400).send(e);
+    // }) 
 })
 
 module.exports = router;
