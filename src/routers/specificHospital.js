@@ -16,8 +16,12 @@ const datePick = () => {
 
 
 const availabilityCount = (appointments, arr, hospId) => {
-    const availabilityCountArr = [9,9,9,9,9,9,9];
+    const availabilityCountArr = [];
     let k = 0;
+    //below for loop is to initialize the total availability count to 10 for every date
+    for(let m = 0;m<arr.length;m++){
+        availabilityCountArr[m] = 10;
+    }
     for(let j=0;j<arr.length;j++) {
         const id = hospId+"+"+arr[j];
         for(let i=0;i<appointments.length ;i++){
@@ -35,17 +39,18 @@ router.get('/specificHospital/:id', (req, res) => {
     let arrOfDates = datePick();
     Appointment.find({}).then((appoints) => {
         appointments = appoints;
+        Hospital.findOne({hId : hospId}).then((hospital) => {
+            res.render('specificHospital',{
+                hospital,
+                appointments,
+                datesArr: arrOfDates,
+                availabilityCountArr: availabilityCount(appointments, arrOfDates, hospId)
+            })
+        })
     }).catch((err) => {
         console.log(err);
     })
-    Hospital.findOne({hId : hospId}).then((hospital) => {
-        res.render('specificHospital',{
-            hospital,
-            appointments,
-            datesArr: arrOfDates,
-            availabilityCountArr: availabilityCount(appointments, arrOfDates, hospId)
-        })
-    })
+    
 })
 
 router.post('/specificHospital/:id', (req, res) => {
