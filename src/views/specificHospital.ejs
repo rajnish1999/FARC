@@ -48,9 +48,14 @@
         </div>
     <% } %>
     
-    <div class="jumbotron center" style="margin-top: 40px;">
+    <div class="jumbotron wide img_jumbo" 
+        style="background-image: url('../images/hospitalVisit.jpg'); 
+        margin-top: 50px;
+        margin-bottom: 0px;
+        "                
+    >
         <h1 class="display-4">To visit the official website 
-             
+            
                 <a href="<%= hospital.hospLink %>" 
                     target="_blank"
                     style="color: black;"
@@ -59,7 +64,7 @@
                 </a> 
         </h1>
         <a href="<%= hospital.link %> " target="_blank">
-            <button type="button" class="blockButton btn btn-success">
+            <button type="button" class="blockButton btn btn-dark"  >
                 Visit Google maps for <%= hospital.hName %> here. 
             </button>    
         </a>
