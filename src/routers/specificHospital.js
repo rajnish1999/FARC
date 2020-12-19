@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Hospital = require('../models/hospital');
 const Appointment = require('../models/appointment');
+const User = require('../models/user');
 
 const datePick = () => {
     let arr = [];
@@ -16,8 +17,12 @@ const datePick = () => {
 
 
 const availabilityCount = (appointments, arr, hospId) => {
-    const availabilityCountArr = [9,9,9,9,9,9,9];
+    const availabilityCountArr = [];
     let k = 0;
+    //below for loop is to initialize the total availability count to 10 for every date
+    for(let m = 0;m<arr.length;m++){
+        availabilityCountArr[m] = 10;
+    }
     for(let j=0;j<arr.length;j++) {
         const id = hospId+"+"+arr[j];
         for(let i=0;i<appointments.length ;i++){
@@ -35,25 +40,38 @@ router.get('/specificHospital/:id', (req, res) => {
     let arrOfDates = datePick();
     Appointment.find({}).then((appoints) => {
         appointments = appoints;
+        Hospital.findOne({hId : hospId}).then((hospital) => {
+            res.render('specificHospital',{
+                hospital,
+                appointments,
+                datesArr: arrOfDates,
+                availabilityCountArr: availabilityCount(appointments, arrOfDates, hospId)
+            })
+        })
     }).catch((err) => {
         console.log(err);
     })
-    Hospital.findOne({hId : hospId}).then((hospital) => {
-        res.render('specificHospital',{
-            hospital,
-            appointments,
-            datesArr: arrOfDates,
-            availabilityCountArr: availabilityCount(appointments, arrOfDates, hospId)
-        })
-    })
+    
 })
 
-router.post('/specificHospital/:id', (req, res) => {
+router.post('/specificHospital/:id', (req, res, next) => {
     let date = req.body.date;
     let hId = req.params.id;
     let user = req.user;
     
     const appointId = hId+"+"+date;
+
+    User.findById(user._id).then((user_) => {
+        user_.hospAppointment.push(appointId);
+        user_.save().then(() => {
+            next();
+        }).catch((err) => {
+            return res.send(err)
+        })
+    }).catch((err) => {
+        return res.send(err);
+    })
+    
     Appointment.findOne({appointId : appointId}).then((appoint) => {
         if(!appoint){
 
@@ -71,7 +89,7 @@ router.post('/specificHospital/:id', (req, res) => {
         }else{
             appoint.appointmentsAvail--;
             appoint.save().then(() => {
-                res.json("appointment done");
+                return res.json("appointment done");
             }).catch((err) => {
                 console.log(err);
             })

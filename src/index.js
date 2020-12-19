@@ -11,6 +11,7 @@ const hospitalRouter = require('./routers/hospital');
 const userRouter = require('./routers/user');
 const landingPageRouter = require('./routers/landingPage');
 const specificHospitalRouter = require('./routers/specificHospital');
+const generalAppointmentRouter = require('./routers/generalAppointment');
 const app = express();
 
 //body-parser
@@ -52,6 +53,7 @@ app.use(hospitalRouter);
 app.use(userRouter);
 app.use(landingPageRouter);
 app.use(specificHospitalRouter);
+app.use(generalAppointmentRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

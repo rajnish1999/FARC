@@ -32,12 +32,13 @@
                         <div class="card " style="transition: 0.5s;">                            
                             <div class="card-body">
                                 <p class="card-title"> Date: <%= datesArr[j] %> </p>
-                                <p class="card-title countClass" id="count-<%= j %>"> Availability: <%= availabilityCountArr[i] %> </p>                                
+                                <p class="card-title" > Availability: <span class="countClass" id="count-<%= j %>"><%= availabilityCountArr[j] %></span> </p>                                
                             </div>
                             <input type="button" 
+                                
                                 value="Book Appointment"
-                                onclick="postData('<%= datesArr[i] %>', '<%= i %>')"
-                                id="btn-<%= i %>"
+                                onclick="postData('<%= datesArr[j] %>', '<%= j %>')"
+                                id="btn-<%= j %>"
                                 class="classBtn btn btn-success"
                             >                            
                         </div>
@@ -79,7 +80,6 @@
            }
         }
         const postData = (date, index) => {
-            console.log(index);
             const data = {
                 date
             };
@@ -95,10 +95,11 @@
                 if(result){
                     const count = document.getElementById(`count-${index}`);
                     const btn = document.getElementById(`btn-${index}`);
-                    count.innerText-=1;
+                    count.innerText=parseInt(parseInt(count.innerText)-1);
                     if(count.innerText==0){
                         btn.disabled = true;
                     }
+                    location.href='/generalAppointment' 
                 }
             }).catch((err) => {
                 console.log(err);

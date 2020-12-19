@@ -4,8 +4,7 @@ const Appointment = mongoose.model('Appointment', {
     appointId : String, //this is will be hId+date
     appointmentsAvail : {
         type : Number,
-        trim : true,
-        default: 10
+        trim : true
     },
     patients : [String],
 })
