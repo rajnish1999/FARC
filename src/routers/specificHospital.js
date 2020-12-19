@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Hospital = require('../models/hospital');
 const Appointment = require('../models/appointment');
+const User = require('../models/user');
 
 const datePick = () => {
     let arr = [];
@@ -53,12 +54,24 @@ router.get('/specificHospital/:id', (req, res) => {
     
 })
 
-router.post('/specificHospital/:id', (req, res) => {
+router.post('/specificHospital/:id', (req, res, next) => {
     let date = req.body.date;
     let hId = req.params.id;
     let user = req.user;
     
     const appointId = hId+"+"+date;
+
+    User.findById(user._id).then((user_) => {
+        user_.hospAppointment.push(appointId);
+        user_.save().then(() => {
+            next();
+        }).catch((err) => {
+            return res.send(err)
+        })
+    }).catch((err) => {
+        return res.send(err);
+    })
+    
     Appointment.findOne({appointId : appointId}).then((appoint) => {
         if(!appoint){
 
@@ -76,7 +89,7 @@ router.post('/specificHospital/:id', (req, res) => {
         }else{
             appoint.appointmentsAvail--;
             appoint.save().then(() => {
-                res.json("appointment done");
+                return res.json("appointment done");
             }).catch((err) => {
                 console.log(err);
             })
