@@ -3,6 +3,7 @@ const router = express.Router();
 const Hospital = require('../models/hospital');
 const Appointment = require('../models/appointment');
 const User = require('../models/user');
+const Department = require('../models/department');
 
 const datePick = () => {
     let arr = [];
@@ -38,10 +39,17 @@ router.get('/specificHospital/:id', (req, res) => {
     const hospId = req.params.id;
     let appointments = 0;
     let arrOfDates = datePick();
+    let departments = [];
+    Department.find({}).then((departmentsArray) => {
+        departments = departmentsArray
+    }).catch((error) => {
+        console.log(error);
+    })
     Appointment.find({}).then((appoints) => {
         appointments = appoints;
         Hospital.findOne({hId : hospId}).then((hospital) => {
             res.render('specificHospital',{
+                departments,
                 hospital,
                 appointments,
                 datesArr: arrOfDates,
