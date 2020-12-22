@@ -4,6 +4,7 @@ const Hospital = require('../models/hospital');
 const Appointment = require('../models/appointment');
 const User = require('../models/user');
 const Department = require('../models/department');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 const datePick = () => {
     let arr = [];
@@ -35,7 +36,7 @@ const availabilityCount = (appointments, arr, hospId) => {
     return availabilityCountArr;
 }
 
-router.get('/specificHospital/:id', (req, res) => {
+router.get('/specificHospital/:id', ensureLoggedIn('/login'), (req, res) => {
     const hospId = req.params.id;
     let appointments = 0;
     let arrOfDates = datePick();
