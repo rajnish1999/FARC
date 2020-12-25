@@ -12,6 +12,7 @@ const userRouter = require('./routers/user');
 const landingPageRouter = require('./routers/landingPage');
 const specificHospitalRouter = require('./routers/specificHospital');
 const generalAppointmentRouter = require('./routers/generalAppointment');
+const doctor = require('./models/doctor');
 const app = express();
 
 //body-parser

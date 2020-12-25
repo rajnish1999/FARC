@@ -427,7 +427,7 @@ const Hospital = mongoose.model('Hospital', {
 
 // })
 
-// const hospital77 = new Hospital({
+// const hospital7700 = new Hospital({
 //     "address" : "PitamPura, Delhi-110034",
 //     "beds" : 79,
 //     "bedsFilled" : 0,
@@ -441,8 +441,8 @@ const Hospital = mongoose.model('Hospital', {
 //     "imageURL": "images/hospImages/bhagwanMahaveer.jpg",
 // })
 
-// hospital77.save().then(() => {
-
+// hospital7700.save().then(() => {
+//     console.log("ok");
 // }).catch((e) => {
 
 // })

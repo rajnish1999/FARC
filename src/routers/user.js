@@ -70,13 +70,12 @@ router.get('/login',(req, res) => {
     res.render('login');
 })
 
-router.post('/login',(req,res,next) => {
-    passport.authenticate('local',{
+router.post('/login', passport.authenticate('local',{
         successReturnToOrRedirect: '/',
         failureRedirect: '/login',
         failureFlash: true // this is to set flash message
-    })(req, res, next)
-})
+    })
+)
 
 router.get('/editUser/:id', (req, res) => {
     const _id = req.params.id;
