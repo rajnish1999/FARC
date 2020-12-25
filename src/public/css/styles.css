@@ -26,6 +26,11 @@
     align-items: center;
 }
 
+.appointmentDetails{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: beige;
+}
+
 .bookAppointment{
     background-image: url('../images/bookAppointment.jpg'); 
     background-size: 100%, 100%;
