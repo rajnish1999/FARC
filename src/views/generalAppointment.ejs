@@ -11,15 +11,66 @@
 </head>
 <body>
 
-    
-    <div id="content">
-        <h3><%= hName%></h3>
-        <h3><%= user.name%></h3>
-        <h3><%= user.age%></h3>
-        <h3><%= user.contactNo%></h3>
-        <h3><%= dateOfApp%></h3>
+    <div class="jumbotron wide center img_jumbo changingDiv" style="background-image: url('../images/appointmentDetails.png');">
+        <h3 class="display-4"><b>Your appointment has been booked!</b></h3>
     </div>
-    <a href="javascript:demoFromHTML()" class="button">Download Acknowledgement</a>
+
+    <div class="jumbotron center bg bg-dark" >
+        <h3 class="appointmentDetails">APPOINTMENT DETAILS</h3>
+    </div>
+
+    <div class="container" id="content">
+        <table class="table center table-bordered">
+            <tr>
+                <th scope="row">Hospital Name</th>
+                <td><%= hName%></td>
+            </tr>
+            <tr>
+                <th scope="row">Your Name</th>
+                <td><%= user.name%></td>
+            </tr>
+            <tr>
+                <th scope="row">Age</th>
+                <td><%= user.age%></td>
+            </tr>
+            <tr>
+                <th scope="row">Contact number</th>
+                <td><%= user.contactNo %></td>
+            </tr>
+            <tr>
+                <th scope="row">Appointment Date</th>
+                <td><%= dateOfApp %></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- <div id="content">
+
+        <h3><%= hName%></h3>
+
+        <h3><%= user.name%></h3>
+
+        <h3><%= user.age%></h3>
+
+        <h3><%= user.contactNo%></h3>
+
+        <h3><%= dateOfApp%></h3>
+
+    </div> -->
+
+    <!-- this is for acknowledgement pdf -->
+    <a href="javascript:demoFromHTML()" >
+        <button class="button btn btn-success blockButton container" 
+            type="button"
+            style="padding: 20px;
+                margin-top: 20px;
+            "
+            
+        >
+            Click here to download Acknowledgement
+        </button>
+    </a>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
     <script>
         function demoFromHTML() {
