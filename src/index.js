@@ -12,7 +12,10 @@ const userRouter = require('./routers/user');
 const landingPageRouter = require('./routers/landingPage');
 const specificHospitalRouter = require('./routers/specificHospital');
 const generalAppointmentRouter = require('./routers/generalAppointment');
-const doctor = require('./models/doctor');
+const departmentsOfDoctorsRouter = require('./routers/departmentsOfDoctors');
+const doctorsOfThisDepartmentRouter = require('./routers/doctorsOfThisDepartment');
+const doctorsAppointmentRouter = require('./routers/doctorsAppointment');
+
 const app = express();
 
 //body-parser
@@ -55,6 +58,9 @@ app.use(userRouter);
 app.use(landingPageRouter);
 app.use(specificHospitalRouter);
 app.use(generalAppointmentRouter);
+app.use(departmentsOfDoctorsRouter);
+app.use(doctorsOfThisDepartmentRouter);
+app.use(doctorsAppointmentRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
