@@ -25,6 +25,13 @@
                             </div>
                             <input type="button" 
                                 
+                                value="Book Doctor's Appointment"
+                                onclick="location.href='/specificHospital/departments/<%= hospital.hId %>'"
+                                
+                                class="classBtn btn btn-success"
+                            >     
+                            <input type="button" 
+                                
                                 value="Book OPD Appointment"
                                 onclick="postData('<%= datesArr[j] %>', '<%= j %>')"
                                 id="btn-<%= j %>"
@@ -38,14 +45,9 @@
         </div>
     <% } %>
     
-    <div class="jumbotron wide img_jumbo" 
-        style="background-image: url('../images/hospitalVisit.jpg'); 
-        margin-top: 50px;
-        margin-bottom: 0px;
-        "                
-    >
+    <div class="jumbotron center" style="margin-top: 40px;">
         <h1 class="display-4">To visit the official website 
-            
+             
                 <a href="<%= hospital.hospLink %>" 
                     target="_blank"
                     style="color: black;"
@@ -54,7 +56,7 @@
                 </a> 
         </h1>
         <a href="<%= hospital.link %> " target="_blank">
-            <button type="button" class="blockButton btn btn-dark"  >
+            <button type="button" class="blockButton btn btn-success">
                 Visit Google maps for <%= hospital.hName %> here. 
             </button>    
         </a>

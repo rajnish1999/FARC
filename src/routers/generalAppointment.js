@@ -8,11 +8,19 @@ router.get('/generalAppointment',(req,res) => {
     const dateOfApp = user.hospAppointment[user.hospAppointment.length-1].split('+')[1];
 
     Hospital.findOne({hId : hospId}).then((hospital) => {
-        res.render('generalAppointment', {
-            user,
-            dateOfApp,
-            hName : hospital.hName
+        let departments = [];
+        Department.find({}).then((departmentsArray) => {
+            departments = departmentsArray
+            res.render('generalAppointment', {
+                user,
+                dateOfApp,
+                hName : hospital.hName,
+                departments
+            })
+        }).catch((error) => {
+            console.log(error);
         })
+        
     }).catch((err) => {
         console.log("hello"+err);
     })
