@@ -10,7 +10,12 @@ router.get('/doctorsAppointmentPDF/:id',(req,res) => {
     Doctor.findOne({dId : docId}).then((doctor) => {
         const hospId = doctor.hId;
         const dateOfApp = user.docAppointment[user.docAppointment.length-1].split('+')[1];
-
+        let currDept = "";
+        Department.findOne({deptId : doctor.deptId}).then((dept) => {
+            currDept = dept;
+        }).catch((err) => {
+            console.log(err);
+        })
         Hospital.findOne({hId : hospId}).then((hospital) => {
             let departments = [];
             Department.find({}).then((departmentsArray) => {
@@ -20,7 +25,8 @@ router.get('/doctorsAppointmentPDF/:id',(req,res) => {
                     user,
                     dateOfApp,
                     hName : hospital.hName,
-                    departments
+                    departments,
+                    currDept
                 })
             }).catch((error) => {
                 console.log(error);
