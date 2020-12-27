@@ -47,7 +47,8 @@ const userSchema = new mongoose.Schema({
         trim: true,
     },
     //this attribute will contain the list of hospitals+date the user has taken appointment into.
-    hospAppointment : [String]
+    hospAppointment : [String],
+    docAppointment : [String]
 })
 
 //hash the plain text password before saving

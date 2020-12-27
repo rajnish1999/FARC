@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Doctor = mongoose.model('Doctor', {
-    daysAvailable: [Number],
+    daysAvailable : [Number],
     dId : Number,
     deptId : Number,
     designation : String,
@@ -15,7 +15,7 @@ const Doctor = mongoose.model('Doctor', {
 })
 
 // const doctor1 = new  Doctor({
-//     "daysAvailable:" : [ 1, 3, 5 ],
+//     "daysAvailable" : [1,3,5],
 //     "dId" : 0,
 //     "deptId" : 0,
 //     "designation" : "Surgeon",
@@ -35,7 +35,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor2 = new  Doctor({
-//     "daysAvailable:" : [ 2, 4, 6, 0 ],
+//     "daysAvailable" : [2,4,6,0],
 //     "dId" : 1,
 //     "deptId" : 0,
 //     "designation" : "Surgeon",
@@ -55,7 +55,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor3 = new  Doctor({
-//     "daysAvailable:" : [ 2, 4, 6, 0 ],
+//     "daysAvailable" : [2,4,6,0],
 //     "dId" : 2,
 //     "deptId" : 1,
 //     "designation" : "Anaesthesiologist",
@@ -75,7 +75,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor4 = new  Doctor({
-//     "daysAvailable:" : [ 0, 1, 3, 5 ],
+//     "daysAvailable" : [0,1,3,5],
 //     "dId" : 3,
 //     "deptId" : 1,
 //     "designation" : "Anaesthesiologist",
@@ -95,7 +95,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor5 = new  Doctor({
-//     "daysAvailable:" : [ 0, 1, 3, 5 ],
+//     "daysAvailable" : [0,1,3,5],
 //     "dId" : 4,
 //     "deptId" : 2,
 //     "designation" : " Cardiologist",
@@ -115,7 +115,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor6 = new  Doctor({
-//     "daysAvailable:" : [ 5, 2 ],
+//     "daysAvailable" : [5,2],
 //     "dId" : 5,
 //     "deptId" : 2,
 //     "designation" : " Cardiologist",
@@ -135,7 +135,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor7 = new  Doctor({
-//     "daysAvailable:" : [ 5, 2, 0 ],
+//     "daysAvailable" : [5,2,0],
 //     "dId" : 6,
 //     "deptId" : 3,
 //     "designation" : "Internist",
@@ -155,7 +155,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor8 = new  Doctor({
-//     "daysAvailable:" : [ 1, 3, 5 ],
+//     "daysAvailable" : [1,3,5],
 //     "dId" : 7,
 //     "deptId" : 3,
 //     "designation" : "Internist",
@@ -175,7 +175,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor9 = new  Doctor({
-//     "daysAvailable:" : [ 1, 3, 5, 2 ],
+//     "daysAvailable" : [1,3,5,2],
 //     "dId" : 8,
 //     "deptId" : 4,
 //     "designation" : "Oncologist",
@@ -195,7 +195,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor10 = new  Doctor({
-//     "daysAvailable:" : [ 1, 3, 5, 2, 6 ],
+//     "daysAvailable" : [1,3,5,2,6],
 //     "dId" : 9,
 //     "deptId" : 4,
 //     "designation" : "Oncologist",
@@ -215,7 +215,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor11 = new  Doctor({
-//     "daysAvailable:" : [ 1, 3, 5, 6 ],
+//     "daysAvailable" : [1,3,5,6],
 //     "dId" : 10,
 //     "deptId" : 5,
 //     "designation" : "Endocrinologist",
@@ -235,7 +235,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor12 = new  Doctor({
-//     "daysAvailable:" : [ 1, 3, 5, 6, 0 ],
+//     "daysAvailable" : [1,3,5,6,0],
 //     "dId" : 11,
 //     "deptId" : 5,
 //     "designation" : "Endocrinologist",
@@ -255,7 +255,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor13 = new  Doctor({
-//     "daysAvailable:" : [ 3, 5, 6, 0 ],
+//     "daysAvailable" : [3,5,6,0],
 //     "dId" : 12,
 //     "deptId" : 6,
 //     "designation" : "Radiologists ",
@@ -275,7 +275,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor14 = new  Doctor({
-//     "daysAvailable:" : [ 3, 5, 0, 2 ],
+//     "daysAvailable" : [3,5,0,2],
 //     "dId" : 13,
 //     "deptId" : 6,
 //     "designation" : "Radiologists ",
@@ -295,7 +295,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor15 = new  Doctor({
-//     "daysAvailable:" : [ 3, 5, 0, 4 ],
+//     "daysAvailable" : [3,5,0,4],
 //     "dId" : 14,
 //     "deptId" : 7,
 //     "designation" : "Gastroenterologist",
@@ -315,7 +315,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor16 = new  Doctor({
-//     "daysAvailable:" : [ 3, 5, 0, 4, 1 ],
+//     "daysAvailable" : [3,5,0,4,1],
 //     "dId" : 15,
 //     "deptId" : 7,
 //     "designation" : "Gastroenterologist",
@@ -335,7 +335,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor17 = new  Doctor({
-//     "daysAvailable:" : [ 3, 5, 0, 4, 1 ],
+//     "daysAvailable" : [3,5,0,4,1],
 //     "dId" : 16,
 //     "deptId" : 8,
 //     "designation" : "Surgeon",
@@ -355,7 +355,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor18 = new  Doctor({
-//     "daysAvailable:" : [ 3, 5, 0, 4, 1 ],
+//     "daysAvailable" : [3,5,0,4,1],
 //     "dId" : 17,
 //     "deptId" : 8,
 //     "designation" : "Surgeon",
@@ -375,7 +375,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor19 = new  Doctor({
-//     "daysAvailable:" : [ 3, 0, 2, 6 ],
+//     "daysAvailable" : [3,0,2,6],
 //     "dId" : 18,
 //     "deptId" : 8,
 //     "designation" : "Surgeon",
@@ -395,7 +395,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor20 = new  Doctor({
-//     "daysAvailable:" : [ 3, 0, 2, 6 ],
+//     "daysAvailable" : [3,0,2,6],
 //     "dId" : 19,
 //     "deptId" : 9,
 //     "designation" : "Hematologist",
@@ -415,7 +415,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor22 = new  Doctor({
-//     "daysAvailable:" : [ 0, 1, 4, 5 ],
+//     "daysAvailable" : [0,1,4,5],
 //     "dId" : 20,
 //     "deptId" : 9,
 //     "designation" : "Hematologist",
@@ -435,7 +435,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor24 = new  Doctor({
-//     "daysAvailable:" : [ 2, 3, 6, 5 ],
+//     "daysAvailable" : [2,3,6,5],
 //     "dId" : 21,
 //     "deptId" : 10,
 //     "designation" : "Nephrologists",
@@ -455,7 +455,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor25 = new  Doctor({
-//     "daysAvailable:" : [ 2, 3, 6, 5, 1, 4, 0 ],
+//     "daysAvailable" : [2,3,6,5,1,4,0],
 //     "dId" : 22,
 //     "deptId" : 10,
 //     "designation" : "Nephrologists",
@@ -475,7 +475,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor26 = new  Doctor({
-//     "daysAvailable:" : [ 3, 5, 1, 0 ],
+//     "daysAvailable" : [3,5,1,0],
 //     "dId" : 23,
 //     "deptId" : 11,
 //     "designation" : "Obstetricians and Gynecologists",
@@ -495,7 +495,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor27 = new  Doctor({
-//     "daysAvailable:" : [ 5, 2, 4, 6 ],
+//     "daysAvailable" : [5,2,4,6],
 //     "dId" : 24,
 //     "deptId" : 11,
 //     "designation" : "Obstetricians and Gynecologists",
@@ -515,7 +515,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor28 = new  Doctor({
-//     "daysAvailable:" : [ 5, 2, 4, 6 ],
+//     "daysAvailable" : [5,2,4,6],
 //     "dId" : 25,
 //     "deptId" : 12,
 //     "designation" : "Ophthalmologists ",
@@ -535,7 +535,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor29 = new  Doctor({
-//     "daysAvailable:" : [ 5, 6, 1, 3 ],
+//     "daysAvailable" : [5,6,1,3],
 //     "dId" : 26,
 //     "deptId" : 12,
 //     "designation" : "Ophthalmologists ",
@@ -555,7 +555,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor30 = new  Doctor({
-//     "daysAvailable:" : [ 5, 6, 1, 3 ],
+//     "daysAvailable" : [5,6,1,3],
 //     "dId" : 27,
 //     "deptId" : 13,
 //     "designation" : "Surgeon",
@@ -575,7 +575,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor31 = new  Doctor({
-//     "daysAvailable:" : [ 5, 6, 3, 2, 1, 4, 0 ],
+//     "daysAvailable" : [5,6,3,2,1,4,0],
 //     "dId" : 28,
 //     "deptId" : 13,
 //     "designation" : "Surgeon",
@@ -595,7 +595,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor32 = new  Doctor({
-//     "daysAvailable:" : [ 5, 6, 3, 2, 1, 4, 0 ],
+//     "daysAvailable" : [5,6,3,2,1,4,0],
 //     "dId" : 29,
 //     "deptId" : 14,
 //     "designation" : "Pharmacist",
@@ -615,7 +615,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor33 = new  Doctor({
-//     "daysAvailable:" : [ 5, 6, 3, 2, 1, 4, 0 ],
+//     "daysAvailable" : [5,6,3,2,1,4,0],
 //     "dId" : 30,
 //     "deptId" : 14,
 //     "designation" : "Pharmacist",
@@ -635,7 +635,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor34 = new  Doctor({
-//     "daysAvailable:" : [ 5, 2, 1, 4, 0 ],
+//     "daysAvailable" : [5,2,1,4,0],
 //     "dId" : 31,
 //     "deptId" : 15,
 //     "designation" : "Physiologist",
@@ -655,7 +655,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor35 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 6 ],
+//     "daysAvailable" : [5,4,0,6],
 //     "dId" : 32,
 //     "deptId" : 15,
 //     "designation" : "Physiologist",
@@ -675,7 +675,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor36 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 6, 1 ],
+//     "daysAvailable" : [5,4,0,6,1],
 //     "dId" : 33,
 //     "deptId" : 16,
 //     "designation" : "Psychiatrists ",
@@ -695,7 +695,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor37 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 6, 1, 2, 3 ],
+//     "daysAvailable" : [5,4,0,6,1,2,3],
 //     "dId" : 34,
 //     "deptId" : 16,
 //     "designation" : "Psychiatrists ",
@@ -715,7 +715,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor38 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 6, 1, 2, 3 ],
+//     "daysAvailable" : [5,4,0,6,1,2,3],
 //     "dId" : 35,
 //     "deptId" : 17,
 //     "designation" : "Rheumatologist",
@@ -735,7 +735,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor39 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 6, 1, 2, 3 ],
+//     "daysAvailable" : [5,4,0,6,1,2,3],
 //     "dId" : 36,
 //     "deptId" : 17,
 //     "designation" : "Rheumatologist",
@@ -755,7 +755,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor40 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 6, 1, 2, 3 ],
+//     "daysAvailable" : [5,4,0,6,1,2,3],
 //     "dId" : 37,
 //     "deptId" : 18,
 //     "designation" : "Urologist",
@@ -775,7 +775,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor41 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 1 ],
+//     "daysAvailable" : [5,4,0,1],
 //     "dId" : 38,
 //     "deptId" : 18,
 //     "designation" : "Urologist",
@@ -795,7 +795,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor42 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 1, 2, 3, 6 ],
+//     "daysAvailable" : [5,4,0,1,2,3,6],
 //     "dId" : 39,
 //     "deptId" : 19,
 //     "designation" : "Neurologist",
@@ -815,7 +815,7 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 // const doctor43 = new  Doctor({
-//     "daysAvailable:" : [ 5, 4, 0, 1, 2, 3, 6 ],
+//     "daysAvailable" : [5,4,0,1,2,3,6],
 //     "dId" : 40,
 //     "deptId" : 19,
 //     "designation" : "Neurologist",
