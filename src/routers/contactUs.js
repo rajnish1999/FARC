@@ -1,4 +1,5 @@
 const express = require('express');
+const Department = require('../models/department');
 const router = express.Router();
 
 router.get('/contactUs', (req, res) => {
