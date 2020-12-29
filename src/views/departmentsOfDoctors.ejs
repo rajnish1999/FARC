@@ -13,14 +13,14 @@
         
         <% for(let j=0;j<departments.length;j++) { %> 
             <% if(thisHospDepts[i] == departments[j].deptId) { %> 
-                <div class="card container" style="transform: none; margin-top: 10px;"> 
-                   <!-- <%= departments[j].deptName %> -->
-                   <input
+                <div class="card container" style="margin-top: 10px; transform: none;">
+<!-- <div> <%= departments[j].deptName %> </div> -->
+                <input
                         value = "<%= departments[j].deptName %>"
-                        type = "button"
                         class="deptButton"
-                        onclick = "location.href='/doctorsOfThisDepartment/<%= hospital.hId %>'"
-                    >
+                        type = "button"
+                        onclick = "location.href='/doctorsOfThisDepartment/<%= hospital.hId %>/<%= departments[j].deptId %>?deptName=<%= departments[j].deptName %>&hospName=<%= hospital.hName %>'"
+                >
                 </div>
                
             <% } %>
