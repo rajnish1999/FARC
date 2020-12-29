@@ -8,7 +8,7 @@
                <input
                     value = "Checkout Doctors"
                     type = "button"
-                    onclick = "location.href='/doctorsOfThisDepartment/<%= hospital.hId %>'"
+                    onclick = "location.href='/doctorsOfThisDepartment/<%= hospital.hId %>/<%= departments[j].deptId %>?deptName=<%= departments[j].deptName %>&hospName=<%= hospital.hName %>'"
                >
             <% } %>
         <% } %>
