@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add tests</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> 
-    <link rel="stylesheet" href="/css/styles.css">
-
-</head>
-<body>
-
+<%- include('partials/header') %> 
     <div class="jumbotron wide center img_jumbo changingDiv" style="background-image: url('../images/appointmentDetails.png');">
         <h3 class="display-4"><b>Your appointment has been booked!</b></h3>
     </div>
@@ -71,17 +59,20 @@
     </div> -->
 
     <!-- this is for acknowledgement pdf -->
-    <a href="javascript:demoFromHTML()" >
-        <button class="button btn btn-success blockButton container" 
-            type="button"
-            style="padding: 20px;
-                margin-top: 20px;
-            "
-            
-        >
-            Click here to download Acknowledgement
-        </button>
-    </a>
+    <div class="container">
+        <a href="javascript:demoFromHTML()" >
+            <button class="button btn btn-success blockButton container" 
+                type="button"
+                style="padding: 20px;
+                    margin-top: 20px;
+                "
+                
+            >
+                Click here to download Acknowledgement
+            </button>
+        </a>
+    
+    </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
     <script>
