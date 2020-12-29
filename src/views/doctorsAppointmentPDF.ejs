@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="/css/styles.css">
 
 </head>
-<body> -->
+<body>
 
-<%- include('partials/header') %>     
     <div class="jumbotron wide center img_jumbo changingDiv" style="background-image: url('../images/appointmentDetails.png');">
         <h3 class="display-4"><b>Your appointment has been booked!</b></h3>
     </div>
@@ -25,6 +24,18 @@
             <tr>
                 <th scope="row">Hospital Name</th>
                 <td><%= hName%></td>
+            </tr>
+            <tr>
+                <th scope="row">Doctor's Name</th>
+                <td><span><%= doctor.firstName%>  </span><span><%= doctor.lastName%></span></td>
+            </tr>
+            <tr>
+                <th scope="row">Doctor's Qualification</th>
+                <td><%= doctor.qualification%></td>
+            </tr>
+            <tr>
+                <th scope="row">Department's Name</th>
+                <td><%= currDept.deptName%></td>
             </tr>
             <tr>
                 <th scope="row">Your Name</th>
@@ -75,7 +86,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
     <script>
         function demoFromHTML() {
-            var pdf = new jsPDF('p', 'pt', 'letter');
+            var pdf = new jsPDF('p', 'pt', 'a3');
             // source can be HTML-formatted string, or a reference
             // to an actual DOM element from which the text will be scraped.
             source = $('#content')[0];
@@ -94,8 +105,8 @@
             margins = {
                 top: 80,
                 bottom: 60,
-                left: 40,
-                width: 522
+                left: 100,
+                width: 422,
             };
             // all coords and widths are in jsPDF instance's declared units
             // 'inches' in this case

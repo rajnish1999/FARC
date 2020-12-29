@@ -1,10 +1,48 @@
 <%- include('partials/header') %> 
 
-    <div><%= doctors[0].firstName%></div>
-    <input
-        type = "button"
-        value = "Book Appointment"
-        onclick = "location.href='/doctorsAppointment'"
-    >
+    <div class="jumbotron">
+        <%=  %> 
+    </div>
+
+    <% let sortedArr = doctors %>
+    <% sortedArr.sort((a, b) => (a.rating < b.rating) ? 1 : ((a.rating === b.rating) ? ((a.firstName > b.firstName) ? 1 : -1) : -1)) %>
+    <% for(let i=0;i<sortedArr.length;i++) { %>
+        <div><span><%= sortedArr[i].firstName%> </span><span><%= sortedArr[i].lastName%> </span></div>
+        <div><%= sortedArr[i].rating%></div>
+        <div>Available on : </div>
+        <% let daysArr = sortedArr[i].daysAvailable %>
+        <% daysArr.sort() %>
+        <% for(let m=0;m<daysArr.length;m++) { %>
+            
+            <% if(daysArr[m] == 0) {%>
+                <span>Sunday</span>
+            <% } %>
+            <% if(daysArr[m] == 1) {%>
+                <span>Monday</span>
+            <% } %>
+            <% if(daysArr[m] == 2) {%>
+                <span>Tuesday</span>
+            <% } %>
+            <% if(daysArr[m] == 3) {%>
+                <span>Wednesday</span>
+            <% } %>
+            <% if(daysArr[m] == 4) {%>
+                <span>Thursday</span>
+            <% } %>
+            <% if(daysArr[m] == 5) {%>
+                <span>Friday</span>
+            <% } %>
+            <% if(daysArr[m] == 6) {%>
+                <span>Saturday</span>
+            <% } %>
+            
+        <% } %>
+        <div></div> <%# this div is to change line%>
+        <input
+            type = "button"
+            value = "Book Appointment"
+            onclick = "location.href='/doctorsAppointment/<%= doctors[i].dId %>'"
+        >
+    <% } %>
 
 <%- include('partials/footer') %> 

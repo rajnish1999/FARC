@@ -29,7 +29,13 @@
                                 onclick="postData('<%= datesArr[j] %>', '<%= j %>')"
                                 id="btn-<%= j %>"
                                 class="classBtn btn btn-success"
-                            >                            
+                            >
+                            <input type="button" 
+                                
+                                value="Book Doctor's Appointment"
+                                onclick="location.href='/specificHospital/departments/<%= hospital.hId %>'"
+                                class="classBtn btn btn-success"
+                            >                           
                         </div>
                     </div>
                 <% } %>

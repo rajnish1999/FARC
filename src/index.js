@@ -15,7 +15,7 @@ const generalAppointmentRouter = require('./routers/generalAppointment');
 const departmentsOfDoctorsRouter = require('./routers/departmentsOfDoctors');
 const doctorsOfThisDepartmentRouter = require('./routers/doctorsOfThisDepartment');
 const doctorsAppointmentRouter = require('./routers/doctorsAppointment');
-const contactUsRouter = require('./routers/contactUs');
+const doctorsAppointmentPDFRouter = require('./routers/doctorsAppointmentPDF');
 
 const app = express();
 
@@ -53,7 +53,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(contactUsRouter);
 app.use(departmentRouter);
 app.use(hospitalRouter);
 app.use(userRouter);
@@ -63,6 +62,7 @@ app.use(generalAppointmentRouter);
 app.use(departmentsOfDoctorsRouter);
 app.use(doctorsOfThisDepartmentRouter);
 app.use(doctorsAppointmentRouter);
+app.use(doctorsAppointmentPDFRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

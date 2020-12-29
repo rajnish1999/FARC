@@ -1,22 +1,31 @@
 <%- include('partials/header') %> 
+
+<div class="jumbotron center img_jumbo changingDiv" style="background-image: url('../../images/doctorAppointmentPage.jpg');">
+    <h3 class="display-4 center"><%= hospital.hName %></h3>
+</div>
+
+<div class="jumbotron container center" style="background-color: lightblue; margin-top: 30px">
+    <h3><b><u>Specialities</u></b></h3>
+</div>
+
     <% let deptArray = []; %>
     <% for(let i=0;i<thisHospDepts.length; i++) { %>
         
         <% for(let j=0;j<departments.length;j++) { %> 
             <% if(thisHospDepts[i] == departments[j].deptId) { %> 
-               <div> <%= departments[j].deptName %> </div>
-               <input
-                    value = "Checkout Doctors"
-                    type = "button"
-                    onclick = "location.href='/doctorsOfThisDepartment/<%= hospital.hId %>'"
-               >
+                <div class="card container" style="transform: none; margin-top: 10px;"> 
+                   <!-- <%= departments[j].deptName %> -->
+                   <input
+                        value = "<%= departments[j].deptName %>"
+                        type = "button"
+                        class="deptButton"
+                        onclick = "location.href='/doctorsOfThisDepartment/<%= hospital.hId %>'"
+                    >
+                </div>
+               
             <% } %>
         <% } %>
 
     <% } %>
-
-    
-
-    
 
 <%- include('partials/footer') %> 

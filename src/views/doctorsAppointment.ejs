@@ -23,20 +23,21 @@
                                 <p class="card-title"> Date: <%= datesArr[j] %> </p>
                                 <p class="card-title" > Availability: <span class="countClass" id="count-<%= j %>"><%= availabilityCountArr[j] %></span> </p>                                
                             </div>
-                            <input type="button" 
+                            <% if(currentDoc.daysAvailable.includes(daysPresentInSlot[j])){ %>
+                                <input type="text" 
+                                    value="Doctor Not Available"
+                                    readonly="readonly"
+                                    class="classBtn btn btn-danger"
+                                >
+                            <% } else {%>
+                                <input type="button" 
                                 
                                 value="Book Doctor's Appointment"
-                                onclick="location.href='/specificHospital/departments/<%= hospital.hId %>'"
-                                
-                                class="classBtn btn btn-success"
-                            >     
-                            <input type="button" 
-                                
-                                value="Book OPD Appointment"
                                 onclick="postData('<%= datesArr[j] %>', '<%= j %>')"
                                 id="btn-<%= j %>"
                                 class="classBtn btn btn-success"
-                            >                            
+                                >     
+                            <% } %>                       
                         </div>
                     </div>
                 <% } %>
@@ -45,9 +46,14 @@
         </div>
     <% } %>
     
-    <div class="jumbotron center" style="margin-top: 40px;">
+    <div class="jumbotron wide img_jumbo" 
+        style="background-image: url('../images/hospitalVisit.jpg'); 
+        margin-top: 50px;
+        margin-bottom: 0px;
+        "                
+    >
         <h1 class="display-4">To visit the official website 
-             
+            
                 <a href="<%= hospital.hospLink %>" 
                     target="_blank"
                     style="color: black;"
@@ -56,7 +62,7 @@
                 </a> 
         </h1>
         <a href="<%= hospital.link %> " target="_blank">
-            <button type="button" class="blockButton btn btn-success">
+            <button type="button" class="blockButton btn btn-dark"  >
                 Visit Google maps for <%= hospital.hName %> here. 
             </button>    
         </a>
@@ -74,7 +80,7 @@
             const data = {
                 date
             };
-            fetch('/specificHospital/<%= hospital.hId %>', {
+            fetch('/doctorsAppointment/<%= docId %>', {
                 method : 'POST' ,
                 headers : {
                     'Content-Type': 'application/json;charset=utf-8'
@@ -90,7 +96,7 @@
                     if(count.innerText==0){
                         btn.disabled = true;
                     }
-                    location.href='/generalAppointment' 
+                    location.href='/doctorsAppointmentPDF/<%=docId%>' 
                 }
             }).catch((err) => {
                 console.log(err);

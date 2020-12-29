@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Hospital = require('../models/hospital');
+const Department = require('../models/department');
 
 router.get('/generalAppointment',(req,res) => {
     const user = req.user;
