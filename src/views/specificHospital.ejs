@@ -23,15 +23,13 @@
                                 <p class="card-title"> Date: <%= datesArr[j] %> </p>
                                 <p class="card-title" > Availability: <span class="countClass" id="count-<%= j %>"><%= availabilityCountArr[j] %></span> </p>                                
                             </div>
-                            <input type="button" 
-                                
+                            <input type="button"                                 
                                 value="Book OPD Appointment"
                                 onclick="postData('<%= datesArr[j] %>', '<%= j %>')"
                                 id="btn-<%= j %>"
                                 class="classBtn btn btn-success"
                             ><br>
-                            <input type="button" 
-                                
+                            <input type="button"                                 
                                 value="Book Doctor's Appointment"
                                 onclick="location.href='/specificHospital/departments/<%= hospital.hId %>'"
                                 class="classBtn btn btn-success"
@@ -65,8 +63,7 @@
                     <button type="button" class="btn deptButton container" style="background-color:#FAD0C9FF;">
                         Click Here
                     </button>
-                </a>
-  
+                </a>  
             </div>
         </div>
     </div>
