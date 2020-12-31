@@ -4,7 +4,7 @@
     </div>
 
     <div class=" jumbotron bg-dark text-white center"  >
-        <h1 class="display-3 "> <%= hospital.hName %> </h1>
+        <h1 class="display-4"> <%= hospital.hName %> </h1>
     </div>
 
     <div class="jumbotron center bookAppointment" >
@@ -46,26 +46,30 @@
         </div>
     <% } %>
     
-    <div class="jumbotron wide img_jumbo" 
+    <div class="jumbotron img_jumbo" 
         style="background-image: url('../images/hospitalVisit.jpg'); 
         margin-top: 50px;
         margin-bottom: 0px;
         "                
     >
-        <h1 class="display-4">To visit the official website 
-            
-                <a href="<%= hospital.hospLink %>" 
-                    target="_blank"
-                    style="color: black;"
-                >
-                    <button class="btn btn-warning">Click here</button>                    
-                </a> 
-        </h1>
-        <a href="<%= hospital.link %> " target="_blank">
-            <button type="button" class="blockButton btn btn-dark"  >
-                Visit Google maps for <%= hospital.hName %> here. 
-            </button>    
-        </a>
+        <div class="container">
+            <div class="card" style="transform: none; background-color: #FAD0C9FF; color: #6E6E6DFF;">
+                <p class="center" style="font-size: 18px;">Navigate to the official website of <%=hospital.hName%></p>
+                <a href="<%= hospital.hospLink %>" target="_blank">
+                    <button type="button" class="btn btn-secondary deptButton container">
+                        Click Here
+                    </button>
+                </a>
+            </div><hr>
+            <div class="card" style="transform: none; background-color: #6E6E6DFF; color: white;">
+                <p class="center" style="font-size: 18px;">Visit Google maps for <%=hospital.hName%></p>
+                <a href="<%= hospital.link %>" target="_blank">
+                    <button type="button" class="btn deptButton container" style="background-color:#FAD0C9FF;">
+                        Click Here
+                    </button>
+                </a>  
+            </div>
+        </div>
     </div>
 
     <script>
