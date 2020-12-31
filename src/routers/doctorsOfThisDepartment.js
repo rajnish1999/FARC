@@ -19,7 +19,7 @@ router.get('/doctorsOfThisDepartment/:id1/:id2', (req, res) => {
 
     Doctor.find({}).then((doctorsArr) => {
         for(let i=0;i<doctorsArr.length;i++){
-            if(doctorsArr[i].hId == hospId && doctorsArr[i].dId == deptId){
+            if(doctorsArr[i].hId == hospId && doctorsArr[i].deptId == deptId){
                 doctors.push(doctorsArr[i]);
             }
         }

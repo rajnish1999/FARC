@@ -68,7 +68,7 @@ app.use(doctorsAppointmentPDFRouter);
 app.use(aboutUsRouter);
 app.use(contactUsRouter);
 
-const port = process.env.PORT || 3300;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 })

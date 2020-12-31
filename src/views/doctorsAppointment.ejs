@@ -24,19 +24,19 @@
                                 <p class="card-title" > Availability: <span class="countClass" id="count-<%= j %>"><%= availabilityCountArr[j] %></span> </p>                                
                             </div>
                             <% if(currentDoc.daysAvailable.includes(daysPresentInSlot[j])){ %>
-                                <input type="text" 
-                                    value="Doctor Not Available"
-                                    readonly="readonly"
-                                    class="classBtn btn btn-danger"
-                                >
-                            <% } else {%>
                                 <input type="button" 
                                 
                                 value="Book Doctor's Appointment"
                                 onclick="postData('<%= datesArr[j] %>', '<%= j %>')"
                                 id="btn-<%= j %>"
                                 class="classBtn btn btn-success"
-                                >     
+                                > 
+                            <% } else {%>
+                                <input type="text" 
+                                value="Doctor Not Available"
+                                readonly="readonly"
+                                class="classBtn btn btn-danger"
+                            >
                             <% } %>                       
                         </div>
                     </div>
