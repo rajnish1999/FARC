@@ -35,7 +35,7 @@
                                 <input type="text" 
                                 value="Doctor Not Available"
                                 readonly="readonly"
-                                class="classBtn btn btn-danger"
+                                class="classBtn btn btn-danger disabled"
                             >
                             <% } %>                       
                         </div>
@@ -63,8 +63,8 @@
             </div><hr>
             <div class="card" style="transform: none; background-color: #6E6E6DFF; color: white;">
                 <p class="center" style="font-size: 18px;">Visit Google maps for <%=hospital.hName%></p>
-                <a href="<%= hospital.link %>" target="_blank">
-                    <button type="button" class="btn deptButton container" style="background-color:#FAD0C9FF;">
+                <a href="<%= hospital.link %>" target="_blank" class="mapLinkHospitals" style="background-color:  #FAD0C9FF ;" >
+                    <button type="button" class="btn deptButton container" >
                         Click Here
                     </button>
                 </a>  
