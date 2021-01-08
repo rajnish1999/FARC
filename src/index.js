@@ -17,8 +17,12 @@ const doctorsOfThisDepartmentRouter = require('./routers/doctorsOfThisDepartment
 const doctorsAppointmentRouter = require('./routers/doctorsAppointment');
 const doctorsAppointmentPDFRouter = require('./routers/doctorsAppointmentPDF');
 const aboutUsRouter = require('./routers/aboutUs');
+<<<<<<< HEAD
 const contactUsRouter = require('./routers/contactUs');
 const distanceWisePosRouter = require('./routers/distanceWisePos');
+=======
+const contactUsRouter = require('./routers/contactUs')
+>>>>>>> 09e8388dc0fba4d86815d9cbd6dbf500d3552119
 
 const app = express();
 
@@ -68,7 +72,10 @@ app.use(doctorsAppointmentRouter);
 app.use(doctorsAppointmentPDFRouter);
 app.use(aboutUsRouter);
 app.use(contactUsRouter);
+<<<<<<< HEAD
 app.use(distanceWisePosRouter);
+=======
+>>>>>>> 09e8388dc0fba4d86815d9cbd6dbf500d3552119
 
 const port = process.env.PORT || 3300;
 app.listen(port, () => {
