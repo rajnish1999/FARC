@@ -6,6 +6,8 @@ const User = require('../models/user');
 const Department = require('../models/department');
 const Doctor = require('../models/doctor');
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const { getMailForDoctorsAppointment } = require('./mailForAppointment');
+const { getSMSForDoctorsAppointment } = require('./smsForAppointment');
 
 const datePick = () => {
     let arr = [];
@@ -114,6 +116,8 @@ router.post('/doctorsAppointment/:id', (req, res, next) => {
                 "patients" : [user._id]
             })
             appointment.save().then(()=>{
+                getMailForDoctorsAppointment(user.email, user.name);
+                getSMSForDoctorsAppointment(user.contactNo, user.name);
                 return res.json("appointment done");
             }).catch((err) => {
                 return res.send(err)
@@ -123,6 +127,8 @@ router.post('/doctorsAppointment/:id', (req, res, next) => {
             console.log("inside else");
             appoint.dAppointAvail=appoint.dAppointAvail-1;
             appoint.save().then(() => {
+                getMailForDoctorsAppointment(user.email, user.name);
+                getSMSForDoctorsAppointment(user.contactNo, user.name);
                 return res.json("appointment done");
             }).catch((err) => {
                 return res.send(err)

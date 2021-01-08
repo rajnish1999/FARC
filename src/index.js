@@ -16,6 +16,9 @@ const departmentsOfDoctorsRouter = require('./routers/departmentsOfDoctors');
 const doctorsOfThisDepartmentRouter = require('./routers/doctorsOfThisDepartment');
 const doctorsAppointmentRouter = require('./routers/doctorsAppointment');
 const doctorsAppointmentPDFRouter = require('./routers/doctorsAppointmentPDF');
+const aboutUsRouter = require('./routers/aboutUs');
+const contactUsRouter = require('./routers/contactUs');
+const distanceWisePosRouter = require('./routers/distanceWisePos');
 
 const app = express();
 
@@ -63,8 +66,11 @@ app.use(departmentsOfDoctorsRouter);
 app.use(doctorsOfThisDepartmentRouter);
 app.use(doctorsAppointmentRouter);
 app.use(doctorsAppointmentPDFRouter);
+app.use(aboutUsRouter);
+app.use(contactUsRouter);
+app.use(distanceWisePosRouter);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3300;
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 })

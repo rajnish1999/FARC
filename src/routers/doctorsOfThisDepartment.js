@@ -3,8 +3,11 @@ const router = express.Router();
 const Doctor = require('../models/doctor');
 const Department = require('../models/department');
 
-router.get('/doctorsOfThisDepartment/:id', (req, res) => {
-    const hospId = req.params.id;
+router.get('/doctorsOfThisDepartment/:id1/:id2', (req, res) => {
+    const deptName = req.query.deptName
+    const hospName = req.query.hospName
+    const hospId = req.params.id1;
+    const deptId = req.params.id2;
     let doctors = [];
 
     let departments = [];
@@ -16,13 +19,15 @@ router.get('/doctorsOfThisDepartment/:id', (req, res) => {
 
     Doctor.find({}).then((doctorsArr) => {
         for(let i=0;i<doctorsArr.length;i++){
-            if(doctorsArr[i].hId == hospId){
+            if(doctorsArr[i].hId == hospId && doctorsArr[i].deptId == deptId){
                 doctors.push(doctorsArr[i]);
             }
         }
         res.render('doctorsOfThisDepartment',{
             doctors,
-            departments
+            departments,
+            deptName,
+            hospName
         })
     }).catch((err) => {
         console.log(err);

@@ -29,7 +29,7 @@ const availabilityCount = (appointments, arr, hospId) => {
         const id = hospId+"+"+arr[j];
         for(let i=0;i<appointments.length ;i++){
             if(appointments[i].appointId === id){
-                availabilityCountArr[k++] = appointments[i].appointmentsAvail;
+                availabilityCountArr[j] = appointments[i].appointmentsAvail;
             }
         }
     }
@@ -56,6 +56,8 @@ router.get('/specificHospital/:id', ensureLoggedIn('/login'), (req, res) => {
                 datesArr: arrOfDates,
                 availabilityCountArr: availabilityCount(appointments, arrOfDates, hospId)
             })
+        }).catch((err) => {
+            console.log(err);
         })
     }).catch((err) => {
         console.log(err);
@@ -73,7 +75,7 @@ router.post('/specificHospital/:id', (req, res, next) => {
     User.findById(user._id).then((user_) => {
         user_.hospAppointment.push(appointId);
         user_.save().then(() => {
-            next();
+            
         }).catch((err) => {
             return res.send(err)
         })
@@ -93,6 +95,7 @@ router.post('/specificHospital/:id', (req, res, next) => {
                 return res.json("appointment done");
             }).catch((err) => {
                 console.log(err);
+                return res.send(err);
             })
 
         }else{
@@ -101,11 +104,13 @@ router.post('/specificHospital/:id', (req, res, next) => {
                 return res.json("appointment done");
             }).catch((err) => {
                 console.log(err);
+                return res.send(err);
             })
 
         }
     }).catch((err) => {
         console.log(err);
+        return res.send(err);
     })
 
     

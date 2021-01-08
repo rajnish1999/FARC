@@ -4,11 +4,11 @@
     </div>
 
     <div class=" jumbotron bg-dark text-white center"  >
-        <h1 class="display-3 "> <%= hospital.hName %> </h1>
+        <h1 class="display-4"> <%= hospital.hName %> </h1>
     </div>
 
     <div class="jumbotron center bookAppointment" >
-        <h1 class="display-4">Book an Appointment</h1>
+        <h1 class="lead" style="font-size: 50px;">Book an Appointment</h1>
     </div>
 
     <% const l  = Math.ceil(datesArr.length/3) %>
@@ -23,15 +23,13 @@
                                 <p class="card-title"> Date: <%= datesArr[j] %> </p>
                                 <p class="card-title" > Availability: <span class="countClass" id="count-<%= j %>"><%= availabilityCountArr[j] %></span> </p>                                
                             </div>
-                            <input type="button" 
-                                
+                            <input type="button"                                 
                                 value="Book OPD Appointment"
                                 onclick="postData('<%= datesArr[j] %>', '<%= j %>')"
                                 id="btn-<%= j %>"
                                 class="classBtn btn btn-success"
-                            >
-                            <input type="button" 
-                                
+                            ><br>
+                            <input type="button"                                 
                                 value="Book Doctor's Appointment"
                                 onclick="location.href='/specificHospital/departments/<%= hospital.hId %>'"
                                 class="classBtn btn btn-success"
@@ -44,26 +42,30 @@
         </div>
     <% } %>
     
-    <div class="jumbotron wide img_jumbo" 
+    <div class="jumbotron img_jumbo" 
         style="background-image: url('../images/hospitalVisit.jpg'); 
         margin-top: 50px;
         margin-bottom: 0px;
         "                
     >
-        <h1 class="display-4">To visit the official website 
-            
-                <a href="<%= hospital.hospLink %>" 
-                    target="_blank"
-                    style="color: black;"
-                >
-                    <button class="btn btn-warning">Click here</button>                    
-                </a> 
-        </h1>
-        <a href="<%= hospital.link %> " target="_blank">
-            <button type="button" class="blockButton btn btn-dark"  >
-                Visit Google maps for <%= hospital.hName %> here. 
-            </button>    
-        </a>
+        <div class="container">
+            <div class="card" style="transform: none; background-color: #FAD0C9FF; color: #6E6E6DFF;">
+                <p class="center" style="font-size: 18px;">Navigate to the official website of <%=hospital.hName%></p>
+                <a href="<%= hospital.hospLink %>" target="_blank">
+                    <button type="button" class="btn btn-secondary deptButton container">
+                        Click Here
+                    </button>
+                </a>
+            </div><hr>
+            <div class="card" style="transform: none; background-color: #6E6E6DFF; color: white;">
+                <p class="center" style="font-size: 18px;">Visit Google maps for <%=hospital.hName%></p>
+                <a href="<%= hospital.link %>" target="_blank">
+                    <button type="button" class="btn deptButton container" style="background-color:#FAD0C9FF;">
+                        Click Here
+                    </button>
+                </a>  
+            </div>
+        </div>
     </div>
 
     <script>
