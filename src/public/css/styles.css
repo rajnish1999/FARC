@@ -223,11 +223,8 @@ footer {
 
 .disabled{
     cursor: not-allowed;
-<<<<<<< HEAD
-=======
 }
 
 .mapLinkHospitals :hover{
     background-color:rgb(245, 187, 177);
->>>>>>> 09e8388dc0fba4d86815d9cbd6dbf500d3552119
 }

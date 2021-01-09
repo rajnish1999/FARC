@@ -1,0 +1,12 @@
+<%- include('partials/header') %> 
+
+<% for(let i=0; i< docApp.length; i++){ %>
+    <div>
+        <h3><%= docApp[i].doctor.firstName %></h3>
+        <h3><%= docApp[i].docAppDate %></h3>
+        <h3><%= docApp[i].docHospName %></h3>
+        <h3><%= docApp[i].docDeptName %></h3>
+    </div>
+<% } %>
+
+<%- include('partials/footer') %> 
