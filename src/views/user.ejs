@@ -1,0 +1,76 @@
+<%- include('partials/header') %> 
+
+<div class="jumbotron center changingDiv" style="background-color: rgb(83, 141, 143);">
+    <h3 class="display-4" style="color: white;">My Profile</h3>
+</div>
+
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+    <table class="table center table-bordered">
+        <tr>
+            <th scope="row">Email id</th>
+            <td><%= user.email %></td>
+        </tr>
+        <tr>
+            <th scope="row">Your Name</th>
+            <td><%= user.name%></td>
+        </tr>
+        <tr>
+            <th scope="row">Age</th>
+            <td><%= user.age%></td>
+        </tr>
+        <tr>
+            <th scope="row">Contact number</th>
+            <td><%= user.contactNo %></td>
+        </tr>
+    </table>
+</div>
+
+<div class="jumbotron center bookAppointment" style="background-image: url('../images/bookAppointment.jpg'); margin-bottom: 30px;">
+    <h3 class="display-4">Doctor's Appointments</h3>
+</div>
+
+<% const l  = Math.ceil(docApp.length/3) %>
+<% let k = 0 %>
+<% for(let i =0;i < l ;i++){ %>
+    <div class="row">
+        <% for(let j = k;j < (k+3) ;j++){ %>
+            <% if(j < docApp.length) {%>
+                <div class="column">
+                    <div class="card " style="transition: 0.5s;">                            
+                        <div class="card-body">
+                            <p class="card-title"> Date: <b> <%= docApp[j].docAppDate %> </b></p>
+                            <p class="card-title"> Doctor's name: Dr. <%= docApp[j].doctor.firstName %> <%= docApp[j].doctor.lastName %> </p>
+                            <p class="card-title"> Hospital: <%= docApp[j].docHospName %></p>
+                            <p class="card-title"> Department: <%= docApp[j].docDeptName %></p> 
+                        </div>
+                        <button onclick="" 
+                        type="button"
+                        class="btn btn-success" 
+                        style="margin-bottom: 15px;"
+                        style="margin-bottom: 15px"
+                        class="deptButton"
+                    >
+                        Cancel Appointment
+                    </button>
+
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+        <% k=k+3 %>   
+    </div>
+<% } %>
+<br><br>
+
+<!-- <% for(let i=0; i< docApp.length; i++){ %>
+    <div class="card" style="transform: none;">
+        <h3>Dr. <%= docApp[i].doctor.firstName %> <%= docApp[i].doctor.lastName %></h3>
+        <h3><%= docApp[i].docAppDate %></h3>
+        <h3><%= docApp[i].docHospName %></h3>
+        <h3><%= docApp[i].docDeptName %></h3>
+    </div>
+<% } %> -->
+
+<br><br>
+
+<%- include('partials/footer') %> 

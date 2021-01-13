@@ -2,13 +2,95 @@ const express = require('express');
 const passport = require('../authentication/setupPassport');
 const User = require('../models/user');
 const router = new express.Router();
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+const Hospital = require('../models/hospital');
+const Department = require('../models/department');
+const Doctor = require('../models/doctor');
 
-router.get('/users', (req, res) => {
-    User.find({}).then((users) => {
-        res.status(200).send(users);
-    }).catch((error) => {
-        res.status(400).send()
+const hospFunc = (hospId, date) => {
+    return new Promise((resolve, reject) => {
+        Hospital.findOne({hId : hospId}).then((hospital) => {
+            // console.log(hospital);
+            let obj = {
+                hospAppName: hospital.hName,
+                hospAppDate: date
+            }
+            // console.log(obj);
+            resolve(obj)
+            
+        }).catch((err) => {
+            reject(err);
+        })
     })
+}
+
+const docFunc = (docId, date) => {
+    return new Promise((resolve, reject) => {
+        Doctor.findOne({dId: docId}).then(async (doctor) => {
+            let deptId = doctor.deptId;
+            let hospId = doctor.hId;
+
+            let dept = await Department.findOne({deptId: deptId});
+            let hosp = await Hospital.findOne({hId: hospId});
+
+            docHospName = hosp.hName;
+            docDeptName = dept.deptName;
+            
+            let obj = {
+                docHospName,
+                docDeptName,
+                doctor,
+                docAppDate: date 
+            }
+            console.log(obj);
+            resolve(obj);
+        }).catch((err) => {
+            reject(err)
+        })
+    })
+}
+
+
+router.get('/user', ensureLoggedIn('/login'), async (req, res) => {
+   const user = req.user;
+   let generalApp = [], docApp = [], departments = [];
+
+   Department.find({}).then((departs) => {
+       departments = departs;
+   }).catch((err) => {
+       console.log("inside error of department of user.js "+err);
+   })
+
+   const forLoopHosp = async () => {
+        for(let i=0;i<user.hospAppointment.length;i++){
+            let hospId = user.hospAppointment[i].split("+")[0];
+            let date = user.hospAppointment[i].split("+")[1];
+            let obj = await hospFunc(hospId, date);
+            generalApp.push(obj);
+        }
+    }
+
+    const forLoopDoc = async () => {
+        for(let i=0;i<user.docAppointment.length;i++){
+            let docId = user.docAppointment[i].split("+")[0];
+            let date = user.docAppointment[i].split("+")[1];
+            let obj = await docFunc(docId, date);
+            docApp.push(obj);
+        }
+    }
+    
+    await forLoopHosp();
+    await forLoopDoc();
+
+   console.log("see here" + docApp +"after see here");
+    
+   res.render('user', {
+        // generalApp,
+        docApp,
+        departments,
+        user
+    })
+
 })
 
 router.get('/signUp', (req, res) => {
