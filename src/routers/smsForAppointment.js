@@ -14,8 +14,16 @@ const getSMSForDoctorsAppointment = (contactNo, name) => {
         console.log("sms sent");
     });
 }
- 
+
+const getSMSForGeneralAppointment = (contactNo, name) => {
+    const number = contactNo;
+    const text = `${name}, your appointment has been booked`;
+    nexmo.message.sendSms('Vonage APIs', number, text, (error, response) => {
+        console.log("sms sent");
+    });
+}
 
 module.exports = {
-    getSMSForDoctorsAppointment
+    getSMSForDoctorsAppointment,
+    getSMSForGeneralAppointment
 }

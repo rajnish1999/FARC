@@ -15,8 +15,20 @@ const getMailForDoctorsAppointment = (email, name) => {
       sgMail.send(msg)
 }
 
+const getMailForGeneralAppointment = (email, name) => {
+    const msg = {
+        to: email, 
+        from: 'rajnishtiwarihrt@gmail.com',
+        subject: 'Appointment Done',
+        text: `${name}, your appointment has been successfully booked`
+      }
+      
+      sgMail.send(msg)
+}
+
 module.exports = {
-    getMailForDoctorsAppointment
+    getMailForDoctorsAppointment,
+    getMailForGeneralAppointment
 }
   
 
