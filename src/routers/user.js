@@ -12,6 +12,7 @@ const hospFunc = (hospId, date) => {
         Hospital.findOne({hId : hospId}).then((hospital) => {
             // console.log(hospital);
             let obj = {
+                hospId,
                 hospAppName: hospital.hName,
                 hospAppDate: date
             }
@@ -37,6 +38,7 @@ const docFunc = (docId, date) => {
             docDeptName = dept.deptName;
             
             let obj = {
+                docId,
                 docHospName,
                 docDeptName,
                 doctor,
@@ -85,7 +87,7 @@ router.get('/user', ensureLoggedIn('/login'), async (req, res) => {
    console.log("see here" + docApp +"after see here");
     
    res.render('user', {
-        // generalApp,
+        generalApp,
         docApp,
         departments,
         user

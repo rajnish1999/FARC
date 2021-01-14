@@ -19,6 +19,8 @@ const doctorsAppointmentPDFRouter = require('./routers/doctorsAppointmentPDF');
 const aboutUsRouter = require('./routers/aboutUs');
 const contactUsRouter = require('./routers/contactUs');
 const distanceWisePosRouter = require('./routers/distanceWisePos');
+const cancelHospAppointmentRouter = require('./routers/cancelHospAppointment');
+const cancelDocAppointmentRouter = require('./routers/cancelDocAppointment');
 
 const app = express();
 
@@ -69,6 +71,8 @@ app.use(doctorsAppointmentPDFRouter);
 app.use(aboutUsRouter);
 app.use(contactUsRouter);
 app.use(distanceWisePosRouter);
+app.use(cancelHospAppointmentRouter);
+app.use(cancelDocAppointmentRouter);
 
 const port = process.env.PORT || 3300;
 app.listen(port, () => {
